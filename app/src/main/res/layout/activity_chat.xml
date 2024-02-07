@@ -67,7 +67,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Tarush Gupta"
+                android:text="@string/tarush_gupta"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -89,7 +89,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        tools:listitem="@layout/chat_received"
+
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView5"
@@ -117,9 +120,9 @@
                 android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Type Something"
+                android:hint="@string/type_something"
                 android:inputType="textMultiLine"
-                android:text="hello this is my text\nnext line"
+                android:text="@string/hello_this_is_my_text_nnext_line"
                 android:textColor="@color/indigo_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView7"
