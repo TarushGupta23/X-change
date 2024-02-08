@@ -9,9 +9,10 @@
         android:id="@+id/card_view1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/pink"
-        app:cardCornerRadius="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:cardBackgroundColor="@color/pink_light2"
+        app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,24 +25,22 @@
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
                 android:maxWidth="300dp"
                 android:text="@string/cnfd_n_dlsn_dl_hidshd_sleilscdl_efuidsl"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/date"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="italic" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

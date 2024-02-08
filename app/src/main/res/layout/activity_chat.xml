@@ -101,7 +101,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:cardBackgroundColor="@color/pink_light"
+        app:cardBackgroundColor="@color/indigo_light"
         app:cardCornerRadius="50dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,32 +113,32 @@
             android:layout_height="match_parent">
 
             <EditText
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView7"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/multilineEditText"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:inputType="textMultiLine"
-                android:imeOptions="actionNext"
                 android:layout_gravity="bottom|start"
-                android:gravity="start"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="start"
+                android:hint="Type your message..."
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
                 android:textColor="@color/indigo_dark"
-                android:hint="Type your message..." />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="20dp"
-                app:tint="@color/indigo_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_send_24" />
+                app:srcCompat="@drawable/baseline_send_24"
+                app:tint="@color/indigo_dark" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

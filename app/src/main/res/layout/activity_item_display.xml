@@ -67,7 +67,7 @@
                         android:layout_marginEnd="20dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="Bucket with a larger name"
+                        android:text="RD sharma"
                         android:textColor="@color/indigo"
                         android:textSize="24sp"
                         android:textStyle="bold"
