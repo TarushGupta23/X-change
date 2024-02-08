@@ -113,21 +113,21 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/type_something"
-                android:inputType="textMultiLine"
-                android:text="@string/hello_this_is_my_text_nnext_line"
-                android:textColor="@color/indigo_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView7"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/multilineEditText"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:inputType="textMultiLine"
+                android:imeOptions="actionNext"
+                android:layout_gravity="bottom|start"
+                android:gravity="start"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/indigo_dark"
+                android:hint="Type your message..." />
 
             <ImageView
                 android:id="@+id/imageView7"
