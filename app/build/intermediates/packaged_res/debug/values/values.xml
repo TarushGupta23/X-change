@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="blue">#22baed</color>
+    <color name="blue_dark">#14708e</color>
+    <color name="blue_light">#7ad6f4</color>
+    <color name="indigo">#135589</color>
+    <color name="indigo_dark">#0f446e</color>
+    <color name="indigo_dark2">#082237</color>
+    <color name="indigo_light">#7199b8</color>
+    <color name="pink">#e58ea9</color>
+    <color name="pink_dark">#ce8098</color>
+    <color name="pink_light">#edb0c3</color>
+    <color name="pink_light2">#f5d2dd</color>
+    <color name="pink_light3">#fae8ee</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">X-change</string>
+    <style name="Base.Theme.Xchange" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorAccent">@color/indigo</item>
+        <item name="colorPrimary">@color/indigo_dark</item>
+
+    </style>
+    <style name="Theme.Xchange" parent="Base.Theme.Xchange"/>
+</resources>

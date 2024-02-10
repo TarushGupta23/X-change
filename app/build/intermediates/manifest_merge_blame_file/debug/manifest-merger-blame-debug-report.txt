@@ -1,0 +1,172 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.x_change"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="30"
+9        android:targetSdkVersion="34" />
+10
+11    <permission
+11-->[androidx.core:core:1.9.0] /Users/apple/.gradle/caches/transforms-3/ab80475af2f6748ede33dcc1d7c44185/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+12        android:name="com.example.x_change.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.9.0] /Users/apple/.gradle/caches/transforms-3/ab80475af2f6748ede33dcc1d7c44185/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.9.0] /Users/apple/.gradle/caches/transforms-3/ab80475af2f6748ede33dcc1d7c44185/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.example.x_change.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.9.0] /Users/apple/.gradle/caches/transforms-3/ab80475af2f6748ede33dcc1d7c44185/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.9.0] /Users/apple/.gradle/caches/transforms-3/ab80475af2f6748ede33dcc1d7c44185/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+16
+17    <application
+17-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:5:5-45:19
+18        android:allowBackup="true"
+18-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:6:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.9.0] /Users/apple/.gradle/caches/transforms-3/ab80475af2f6748ede33dcc1d7c44185/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+20        android:dataExtractionRules="@xml/data_extraction_rules"
+20-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:7:9-65
+21        android:debuggable="true"
+22        android:extractNativeLibs="false"
+23        android:fullBackupContent="@xml/backup_rules"
+23-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:8:9-54
+24        android:icon="@mipmap/ic_launcher"
+24-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:9:9-43
+25        android:label="@string/app_name"
+25-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:10:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:11:9-54
+27        android:supportsRtl="true"
+27-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:12:9-35
+28        android:testOnly="true"
+29        android:theme="@style/Theme.Xchange" >
+29-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:13:9-45
+30        <activity
+30-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:15:9-17:40
+31            android:name="com.example.x_change.ChatListActivity"
+31-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:16:13-45
+32            android:exported="false" />
+32-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:17:13-37
+33        <activity
+33-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:18:9-20:40
+34            android:name="com.example.x_change.WelcomeActivity"
+34-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:19:13-44
+35            android:exported="false" />
+35-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:20:13-37
+36        <activity
+36-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:21:9-23:40
+37            android:name="com.example.x_change.ProfileActivity"
+37-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:22:13-44
+38            android:exported="false" />
+38-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:23:13-37
+39        <activity
+39-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:24:9-26:40
+40            android:name="com.example.x_change.LoginActivity"
+40-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:25:13-42
+41            android:exported="false" />
+41-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:26:13-37
+42        <activity
+42-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:27:9-29:40
+43            android:name="com.example.x_change.ItemsDisplayActivity"
+43-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:28:13-49
+44            android:exported="false" />
+44-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:29:13-37
+45        <activity
+45-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:30:9-32:40
+46            android:name="com.example.x_change.CreateProfileActivity"
+46-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:31:13-50
+47            android:exported="false" />
+47-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:32:13-37
+48        <activity
+48-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:33:9-35:40
+49            android:name="com.example.x_change.ChatActivity"
+49-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:34:13-41
+50            android:exported="false" />
+50-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:35:13-37
+51        <activity
+51-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:36:9-44:20
+52            android:name="com.example.x_change.MainActivity"
+52-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:37:13-41
+53            android:exported="true" >
+53-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:38:13-36
+54            <intent-filter>
+54-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:39:13-43:29
+55                <action android:name="android.intent.action.MAIN" />
+55-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:40:17-69
+55-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:40:25-66
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+57-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:42:17-77
+57-->/Users/apple/Documents/AndroidDev/Creations/Xchange2/app/src/main/AndroidManifest.xml:42:27-74
+58            </intent-filter>
+59        </activity>
+60
+61        <provider
+61-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+62            android:name="androidx.startup.InitializationProvider"
+62-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+63            android:authorities="com.example.x_change.androidx-startup"
+63-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+64            android:exported="false" >
+64-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+65            <meta-data
+65-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+66                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+66-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+67                android:value="androidx.startup" />
+67-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/58dace9c7703ce1d1a5fa78c07b1ccdd/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+68            <meta-data
+68-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/apple/.gradle/caches/transforms-3/f30b904dda5cade6a21652685542ad25/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+69                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+69-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/apple/.gradle/caches/transforms-3/f30b904dda5cade6a21652685542ad25/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+70                android:value="androidx.startup" />
+70-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/apple/.gradle/caches/transforms-3/f30b904dda5cade6a21652685542ad25/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+71            <meta-data
+71-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+72                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+72-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+73                android:value="androidx.startup" />
+73-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+74        </provider>
+75
+76        <receiver
+76-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+77            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+77-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+78            android:directBootAware="false"
+78-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+79            android:enabled="true"
+79-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+80            android:exported="true"
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+81            android:permission="android.permission.DUMP" >
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+82            <intent-filter>
+82-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+83                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+84            </intent-filter>
+85            <intent-filter>
+85-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+86                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+87            </intent-filter>
+88            <intent-filter>
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+89                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+90            </intent-filter>
+91            <intent-filter>
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+92                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/apple/.gradle/caches/transforms-3/3bfda38638845cc73529c8bf5018ed46/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+93            </intent-filter>
+94        </receiver>
+95    </application>
+96
+97</manifest>
