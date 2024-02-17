@@ -41,7 +41,6 @@ drawable illustration_2
 drawable illustration_3
 drawable input_field_bgrd
 drawable side_margins
-id WelcomeActivity_signUpBtn
 id button
 id cardView
 id cardView10
@@ -87,7 +86,9 @@ id linearLayout
 id loginBtn
 id login_OTP
 id login_contact
+id login_otpHeading
 id login_pageTitle
+id login_resend
 id multilineEditText
 id recyclerView
 id recyclerView2
@@ -128,12 +129,12 @@ id textView36
 id textView4
 id textView5
 id textView6
-id textView7
 id textView8
 id textView9
 id tv1
 id tv2
 id welcomeActivity_loginBtn
+id welcomeActivity_signUpBtn
 layout activity_chat
 layout activity_chat_list
 layout activity_create_profile
@@ -152,6 +153,13 @@ layout chat_sent
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string firebase_database_url
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string project_id
 style Base.Theme.Xchange
 style Theme.Xchange
 xml backup_rules

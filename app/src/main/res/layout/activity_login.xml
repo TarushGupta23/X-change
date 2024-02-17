@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/illustration_1" />
+        app:srcCompat="@drawable/illustration_1" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -49,7 +49,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="Contact"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/login_contact"
@@ -95,13 +95,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/login_otpHeading" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/login_otpHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="25dp"
                 android:text="OTP"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/login_OTP"
@@ -111,12 +111,24 @@
                 android:id="@+id/loginBtn"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginBottom="70dp"
                 android:backgroundTint="@color/indigo_dark"
                 android:text="Send OTP"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/login_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Resend OTP"
+                android:textColor="@color/pink_dark"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="@+id/login_OTP"
                 app:layout_constraintTop_toBottomOf="@+id/login_OTP" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

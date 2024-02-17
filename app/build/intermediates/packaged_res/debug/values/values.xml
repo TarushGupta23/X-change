@@ -15,6 +15,13 @@
     <color name="pink_light3">#fae8ee</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">X-change</string>
+    <string name="firebase_database_url" translatable="false">https://x-change-1db2c-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1015585465681</string>
+    <string name="google_api_key" translatable="false">AIzaSyBS0zi9Kj2Zl6OZaIkCd5dBnRPGAzPWm_s</string>
+    <string name="google_app_id" translatable="false">1:1015585465681:android:b4ec762f7fafe7aad5df70</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBS0zi9Kj2Zl6OZaIkCd5dBnRPGAzPWm_s</string>
+    <string name="google_storage_bucket" translatable="false">x-change-1db2c.appspot.com</string>
+    <string name="project_id" translatable="false">x-change-1db2c</string>
     <style name="Base.Theme.Xchange" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorAccent">@color/indigo</item>
         <item name="colorPrimary">@color/indigo_dark</item>

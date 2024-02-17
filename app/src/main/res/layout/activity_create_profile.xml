@@ -120,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/illustration_2" />
+        app:srcCompat="@drawable/illustration_2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
@@ -141,8 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/baseline_person_24"
-            tools:srcCompat="@drawable/baseline_person_24" />
+            app:srcCompat="@drawable/baseline_person_24"/>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
