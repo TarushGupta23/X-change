@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (s.equals("login")) {
                             Intent intent = new Intent(this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             Intent intent = new Intent(this, CreateProfileActivity.class);
                             startActivity(intent);
