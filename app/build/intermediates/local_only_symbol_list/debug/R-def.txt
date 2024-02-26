@@ -52,15 +52,17 @@ id cardView4
 id cardView5
 id cardView6
 id cardView7
-id cardView8
 id cardView9
 id card_view1
 id chat
+id chatList_recyclerView
 id constraintLayout
 id createProfileBtn
-id createProfile_OTP
-id createProfile_contact
+id createProfile_address
+id createProfile_imageView
+id createProfile_name
 id createProfile_pageTitle
+id createProfile_profileImage
 id imageView
 id imageView10
 id imageView11
@@ -73,7 +75,6 @@ id imageView17
 id imageView18
 id imageView19
 id imageView2
-id imageView20
 id imageView21
 id imageView22
 id imageView3
@@ -139,7 +140,6 @@ layout activity_chat
 layout activity_chat_list
 layout activity_create_profile
 layout activity_item_display
-layout activity_items_display
 layout activity_login
 layout activity_main
 layout activity_profile
