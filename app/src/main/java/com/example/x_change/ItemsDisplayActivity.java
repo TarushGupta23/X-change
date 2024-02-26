@@ -9,6 +9,6 @@ public class ItemsDisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_items_display);
+        setContentView(R.layout.activity_item_display);
     }
 }

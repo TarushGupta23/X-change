@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, CreateProfileActivity.class);
             startActivity(i);
             finish();
         }
@@ -31,12 +32,14 @@ public class WelcomeActivity extends AppCompatActivity {
             Intent i = new Intent(this, LoginActivity.class);
             i.putExtra("title", "login");
             startActivity(i);
+//            finish();
         });
 
         signUp.setOnClickListener(view -> {
             Intent i = new Intent(this, LoginActivity.class);
             i.putExtra("title", "signup");
             startActivity(i);
+//            finish();
         });
     }
 }

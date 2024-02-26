@@ -55,6 +55,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent = new Intent(this, WelcomeActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,14 +137,15 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        if (s.equals("login")) {
-                            Intent intent = new Intent(this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
+//                        if (s.equals("login")) {
                             Intent intent = new Intent(this, CreateProfileActivity.class);
                             startActivity(intent);
-                        }
+                            finish();
+//                        } else {
+//                            Intent intent = new Intent(this, CreateProfileActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
                     }
                 });
     }
