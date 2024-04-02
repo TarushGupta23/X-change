@@ -15,9 +15,9 @@ import com.example.x_change.R;
 import java.util.ArrayList;
 
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.ViewHolder> {
-    private ArrayList<SwapingItem> list;
+    private ArrayList<SwappingItem> list;
 
-    public MainActivityAdapter(ArrayList<SwapingItem> list) {
+    public MainActivityAdapter(ArrayList<SwappingItem> list) {
         this.list = list;
     }
 
@@ -30,12 +30,12 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.onBindView(list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -51,7 +51,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             bookmarkBtn = itemView.findViewById(R.id.itemCard_bookmarkBtn);
         }
 
-        void onBindView(SwapingItem item) {
+        void onBindView(SwappingItem item) {
             bookmarkBtn.setOnClickListener(view -> {
                 // check if user has those bookmarks and switch
 //                bookmarkIcon.set(R.drawable.baseline_bookmark_24);
