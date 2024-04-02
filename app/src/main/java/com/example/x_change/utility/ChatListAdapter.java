@@ -29,7 +29,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
             super(itemView);
         }
 
-        void onBind(ChatListItem item) {
+        void onBind(Chat item) {
 
         }
     }

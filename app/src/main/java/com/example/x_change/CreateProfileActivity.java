@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.x_change.utility.Profile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +31,7 @@ import com.squareup.picasso.Picasso;
 
 public class CreateProfileActivity extends AppCompatActivity {
     private final String uId = FirebaseAuth.getInstance().getUid();
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(uId);
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);
     private EditText nameInput, addressInput;
     private Button submit;
 
@@ -45,11 +46,11 @@ public class CreateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
-        reference.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() { // checking if user exists - send him to main activity
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userName = (String) dataSnapshot.getValue();
-                if (userName != null && !userName.equals("")) {
+                Profile p = dataSnapshot.getValue(Profile.class);
+                if (p != null && !p.profileName.equals("")) {
                     Intent intent = new Intent(CreateProfileActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -68,14 +69,16 @@ public class CreateProfileActivity extends AppCompatActivity {
         submit.setOnClickListener(view -> {
             String name = nameInput.getText().toString();
             String address = addressInput.getText().toString();
+            String contact = getIntent().getStringExtra("contact");
             if (name.equals("") || address.equals("")) {
                 Toast.makeText(this, "Please enter name and address", Toast.LENGTH_SHORT).show();
             } else if (!isImageSet) {
                 Toast.makeText(this, "Please select profile image", Toast.LENGTH_SHORT).show();
-            }else {
-                reference.child("name").setValue(name);
-                reference.child("address").setValue(address);
+            } else {
+                Profile p = new Profile(uId, address, contact, name);
+                reference.setValue(p);
                 uploadPic();
+
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();

@@ -23,7 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            Intent i = new Intent(this, CreateProfileActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
         }
