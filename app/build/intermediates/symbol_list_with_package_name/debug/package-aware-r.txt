@@ -3430,6 +3430,10 @@ id info
 id invisible
 id inward
 id italic
+id itemCard_bookmarkBtn
+id itemCard_bookmarkIcon
+id itemCard_itemImage
+id itemCard_itemName
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -3452,6 +3456,9 @@ id login_otpHeading
 id login_pageTitle
 id login_resend
 id m3_side_sheet
+id mainActivity_chatCard
+id mainActivity_profileCard
+id mainActivity_recyclerView
 id marquee
 id masked
 id match_constraint

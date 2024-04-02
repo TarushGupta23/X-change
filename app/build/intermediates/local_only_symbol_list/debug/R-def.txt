@@ -44,7 +44,6 @@ drawable side_margins
 id button
 id cardView
 id cardView10
-id cardView11
 id cardView12
 id cardView2
 id cardView3
@@ -64,8 +63,6 @@ id createProfile_name
 id createProfile_pageTitle
 id createProfile_profileImage
 id imageView
-id imageView10
-id imageView11
 id imageView12
 id imageView13
 id imageView14
@@ -83,6 +80,10 @@ id imageView6
 id imageView7
 id imageView8
 id imageView9
+id itemCard_bookmarkBtn
+id itemCard_bookmarkIcon
+id itemCard_itemImage
+id itemCard_itemName
 id linearLayout
 id loginBtn
 id login_OTP
@@ -90,6 +91,9 @@ id login_contact
 id login_otpHeading
 id login_pageTitle
 id login_resend
+id mainActivity_chatCard
+id mainActivity_profileCard
+id mainActivity_recyclerView
 id multilineEditText
 id recyclerView
 id recyclerView2
@@ -102,7 +106,6 @@ id textView101
 id textView107
 id textView11
 id textView12
-id textView13
 id textView14
 id textView15
 id textView16
@@ -122,7 +125,6 @@ id textView28
 id textView29
 id textView3
 id textView30
-id textView31
 id textView32
 id textView33
 id textView34

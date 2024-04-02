@@ -11,4 +11,6 @@ public class Chat {
         this.msg = msg;
         this.date = date;
     }
+
+    public Chat() {}
 }

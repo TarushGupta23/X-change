@@ -1,5 +1,6 @@
 package com.example.x_change;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -7,6 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.x_change.utility.MainActivityAdapter;
+import com.example.x_change.utility.SwappingItem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private CardView chatCard, profileCard;
@@ -34,6 +45,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-//        recyclerView.setAdapter();
+        ArrayList<SwappingItem> list = new ArrayList<>();
+        MainActivityAdapter adapter = new MainActivityAdapter(list);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("items");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    SwappingItem item = snap.getValue(SwappingItem.class);
+                    if (item != null) {
+                        list.add(item);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+        recyclerView.setAdapter(adapter);
     }
 }

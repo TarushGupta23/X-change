@@ -11,6 +11,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.x_change.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -53,11 +55,11 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
         void onBindView(SwappingItem item) {
             bookmarkBtn.setOnClickListener(view -> {
-                // check if user has those bookmarks and switch
-//                bookmarkIcon.set(R.drawable.baseline_bookmark_24);
+                // TODO: check if user has those bookmarks and switch
+                //  bookmarkIcon.set(R.drawable.baseline_bookmark_24);
             });
-
-
+            name.setText(item.name);
+            // TODO: change image
         }
     }
 }

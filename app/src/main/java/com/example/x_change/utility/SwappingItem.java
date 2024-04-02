@@ -17,4 +17,10 @@ public class SwappingItem {
         this.images = images;
         this.mainImage = mainImage;
     }
+
+    public SwappingItem(String n) { // for testing purposes
+        this.name = n;
+    }
+
+    public SwappingItem() {}
 }

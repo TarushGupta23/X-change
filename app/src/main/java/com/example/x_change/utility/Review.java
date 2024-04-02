@@ -10,4 +10,6 @@ public class Review {
         this.content = content;
         this.stars = stars;
     }
+
+    public Review() {}
 }
