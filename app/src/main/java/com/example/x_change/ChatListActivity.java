@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.x_change.utility.ChatListAdapter;
+import com.example.x_change.adapters.ChatListAdapter;
 
 public class ChatListActivity extends AppCompatActivity {
     RecyclerView recyclerView;

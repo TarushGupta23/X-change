@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.x_change.utility.MainActivityAdapter;
+import com.example.x_change.adapters.MainActivityAdapter;
 import com.example.x_change.utility.SwappingItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

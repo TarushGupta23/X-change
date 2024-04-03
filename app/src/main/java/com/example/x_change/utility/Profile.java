@@ -3,8 +3,7 @@ package com.example.x_change.utility;
 import java.util.ArrayList;
 
 public class Profile {
-    public String profileId, profileBanner, profileName;
-    public String location, contact;
+    public String profileId, profileName, location, contact;
     public int successfulSwaps = 0;
     public ArrayList<String> reviewIds, sellingItemIds, bookmarkIds, chatsIds;
 

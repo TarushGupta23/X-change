@@ -16,20 +16,22 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
+                android:id="@+id/profileActivity_bannerImage"
+                android:layout_width="0dp"
                 android:layout_height="180dp"
+                android:background="#FF0000"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                tools:srcCompat="@color/blue" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="125dp"
                 android:visibility="visible"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="50dp"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +45,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/profileActivity_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
@@ -56,7 +58,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/profileActivity_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -64,12 +66,12 @@
                         android:gravity="center"
                         android:text="Ludhiana, Punjab"
                         android:textColor="@color/indigo"
-                        app:layout_constraintEnd_toEndOf="@+id/textView5"
-                        app:layout_constraintStart_toStartOf="@+id/textView5"
-                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                        app:layout_constraintEnd_toEndOf="@+id/profileActivity_name"
+                        app:layout_constraintStart_toStartOf="@+id/profileActivity_name"
+                        app:layout_constraintTop_toBottomOf="@+id/profileActivity_name" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView4"
+                        android:id="@+id/profileActivity_centerBtn"
                         android:layout_width="160dp"
                         android:layout_height="45dp"
                         android:layout_marginTop="30dp"
@@ -77,14 +79,14 @@
                         app:cardCornerRadius="50dp"
                         app:cardElevation="15dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/textView5"
+                        app:layout_constraintEnd_toEndOf="@+id/profileActivity_name"
                         app:layout_constraintHorizontal_bias="0.444"
-                        app:layout_constraintStart_toStartOf="@+id/textView5"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
+                        app:layout_constraintStart_toStartOf="@+id/profileActivity_name"
+                        app:layout_constraintTop_toBottomOf="@+id/profileActivity_address"
                         app:layout_constraintVertical_bias="0.0">
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/profileActivity_centerText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -96,6 +98,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/profileActivity_rightBtn"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_marginStart="25dp"
@@ -104,12 +107,12 @@
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="50dp"
                         app:cardElevation="5dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/cardView4"
-                        app:layout_constraintStart_toEndOf="@+id/cardView4"
-                        app:layout_constraintTop_toTopOf="@+id/cardView4">
+                        app:layout_constraintBottom_toBottomOf="@+id/profileActivity_centerBtn"
+                        app:layout_constraintStart_toEndOf="@+id/profileActivity_centerBtn"
+                        app:layout_constraintTop_toTopOf="@+id/profileActivity_centerBtn">
 
                         <ImageView
-                            android:id="@+id/imageView6"
+                            android:id="@+id/profileActivity_rightIcon"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -118,6 +121,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/profileActivity_leftBtn"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_marginTop="10dp"
@@ -126,11 +130,12 @@
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="50dp"
                         app:cardElevation="5dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/cardView4"
-                        app:layout_constraintEnd_toStartOf="@+id/cardView4"
-                        app:layout_constraintTop_toTopOf="@+id/cardView4">
+                        app:layout_constraintBottom_toBottomOf="@+id/profileActivity_centerBtn"
+                        app:layout_constraintEnd_toStartOf="@+id/profileActivity_centerBtn"
+                        app:layout_constraintTop_toTopOf="@+id/profileActivity_centerBtn">
 
                         <ImageView
+                            android:id="@+id/profileActivity_leftIcon"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -139,7 +144,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
+                        android:id="@+id/profileActivity_itemsRV"
                         android:layout_width="0dp"
                         android:layout_height="220dp"
                         android:layout_marginTop="5dp"
@@ -159,7 +164,7 @@
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView4">
+                        app:layout_constraintTop_toBottomOf="@+id/profileActivity_centerBtn">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -169,7 +174,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView16"
+                                android:id="@+id/profileActivity_itemCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
@@ -196,7 +201,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView17"
+                                android:id="@+id/profileActivity_avgReviews"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4.5"
@@ -222,7 +227,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView18"
+                                android:id="@+id/profileActivity_swapCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
@@ -266,10 +271,10 @@
                         android:textSize="18sp"
                         android:textStyle="bold|italic"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+                        app:layout_constraintTop_toBottomOf="@+id/profileActivity_itemsRV" />
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/profileActivity_viewReviews"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
@@ -304,6 +309,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/profileActivity_bookmarkRV"
                             android:layout_width="0dp"
                             android:layout_height="220dp"
                             android:layout_marginTop="5dp"
@@ -315,7 +321,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView3"
+                        android:id="@+id/profileActivity_reviewsRV"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -326,7 +332,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView20"
-                        tools:itemCount="3"
+                        tools:itemCount="2"
                         tools:listitem="@layout/card_review" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -363,16 +369,17 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:id="@+id/imageView5"
+                            android:id="@+id/profileActivity_profileImage"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/del_sample_3" />
+                            app:srcCompat="@drawable/baseline_person_24" />
                     </androidx.cardview.widget.CardView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/profileActivity_topLeftBtn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
@@ -383,7 +390,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView8"
+                    android:id="@+id/profileActivity_topLeftIcon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
@@ -392,6 +399,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/profileActivity_topRightBtn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -402,7 +410,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView9"
+                    android:id="@+id/profileActivity_topRightIcon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
