@@ -1,5 +1,7 @@
 package com.example.x_change.adapters;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +14,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.x_change.R;
 import com.example.x_change.utility.SwappingItem;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmarksAdapter.ViewHolder> {
+    private String uId = FirebaseAuth.getInstance().getUid();
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId).child("bookmarkIds");
     private ArrayList<SwappingItem> list;
+    private Context context;
 
-    public ProfileBookmarksAdapter(ArrayList<SwappingItem> list) {
+    public ProfileBookmarksAdapter(ArrayList<SwappingItem> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +40,7 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBindView(list.get(position));
+        holder.onBindView(list.get(position), position);
     }
 
     @Override
@@ -39,7 +48,17 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
         return list.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    void removeItem(int position) {
+        list.remove(position);
+        ArrayList<String> newIds = new ArrayList<>();
+        for (SwappingItem item: list) {
+            newIds.add(item.itemId);
+        }
+        reference.setValue(newIds);
+        notifyItemRemoved(position);
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image, bookmarkIcon;
         TextView name;
         CardView bookmarkBtn;
@@ -52,10 +71,11 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
             bookmarkBtn = itemView.findViewById(R.id.itemCard_bookmarkBtn);
         }
 
-        void onBindView(SwappingItem item) {
+        void onBindView(SwappingItem item, int position) {
+            bookmarkBtn.setCardBackgroundColor(context.getResources().getColor(R.color.pink_light));
+            bookmarkIcon.setImageResource(R.drawable.baseline_bookmark_24);
             bookmarkBtn.setOnClickListener(view -> {
-                // TODO: check if user has those bookmarks and switch
-                //  bookmarkIcon.set(R.drawable.baseline_bookmark_24);
+                removeItem(position);
             });
             name.setText(item.name);
             // TODO: change image

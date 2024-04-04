@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.x_change.adapters.MainActivityAdapter;
 import com.example.x_change.utility.SwappingItem;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         ArrayList<SwappingItem> list = new ArrayList<>();
         MainActivityAdapter adapter = new MainActivityAdapter(list);
+
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("items");
         reference.addValueEventListener(new ValueEventListener() {

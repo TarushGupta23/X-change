@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SwappingItem {
     public String name, itemId, sellerId, description, lookingFor, value;
-    public ArrayList<String> images;
+    public ArrayList<String> images = new ArrayList<>();
     public String mainImage;
 
     public SwappingItem(String name, String itemId, String sellerId, String description, String lookingFor, String value, ArrayList<String> images, String mainImage) {

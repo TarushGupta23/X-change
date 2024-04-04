@@ -16,6 +16,7 @@ import com.example.x_change.adapters.ProfileItemsAdapter;
 import com.example.x_change.adapters.ReviewsAdapter;
 import com.example.x_change.utility.Profile;
 import com.example.x_change.utility.Review;
+import com.example.x_change.utility.SwappingItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference().child(uId);
     private DatabaseReference reviewReference = FirebaseDatabase.getInstance().getReference().child("reviews");
+    private DatabaseReference itemReference = FirebaseDatabase.getInstance().getReference().child("items");
 
     private CardView topLeftBtn, topRightBtn, leftBtn, rightBtn, centerBtn;
     private TextView name, address, itemCount, avgReview, swapCount, viewReviews;
@@ -122,9 +124,41 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
-//        reviewsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        // ----
+        // ---- items and bookmarks
+        ArrayList<SwappingItem> bookmarkList = new ArrayList<>();
+        ArrayList<SwappingItem> sellingItemList = new ArrayList<>();
+
+        itemReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (String bookmarkId: p.bookmarkIds) {
+                    DataSnapshot snap = snapshot.child(bookmarkId);
+                    SwappingItem i = snap.getValue(SwappingItem.class);
+                    if (i != null) {
+                        bookmarkList.add(i);
+                    }
+                }
+                bookmarksAdapter = new ProfileBookmarksAdapter(bookmarkList, ProfileActivity.this);
+                bookmarksRV.setLayoutManager(new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                bookmarksRV.setAdapter(bookmarksAdapter);
+
+                for (String itemId: p.sellingItemIds) {
+                    DataSnapshot snap = snapshot.child(itemId);
+                    SwappingItem i = snap.getValue(SwappingItem.class);
+                    if (i != null) {
+                        sellingItemList.add(i);
+                    }
+                }
+                itemsAdapter = new ProfileItemsAdapter(sellingItemList);
+                itemsRV.setLayoutManager(new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                itemsRV.setAdapter(itemsAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
     }
 
     public void loadImageFromFirebase() {
@@ -137,6 +171,6 @@ public class ProfileActivity extends AppCompatActivity {
             });
     }
 
-    //TODO: view all reviews
-
+    //TODO: view all reviews - if > 3
+    //  display "none" for 0 items
 }
