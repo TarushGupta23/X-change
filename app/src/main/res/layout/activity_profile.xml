@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="Chat"
+                            android:text="Add Item"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -116,7 +116,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/baseline_share_24"
+                            app:srcCompat="@drawable/baseline_edit_24"
                             app:tint="@color/indigo" />
                     </androidx.cardview.widget.CardView>
 
@@ -139,19 +139,20 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/baseline_bookmark_24"
+                            app:srcCompat="@drawable/baseline_share_24"
                             app:tint="@color/indigo" />
                     </androidx.cardview.widget.CardView>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/profileActivity_itemsRV"
                         android:layout_width="0dp"
-                        android:layout_height="220dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView15"
+                        tools:itemCount="1"
                         tools:listitem="@layout/card_item" />
 
                     <LinearLayout
@@ -261,6 +262,20 @@
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
                     <TextView
+                        android:id="@+id/profileActivity_viewItems"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:text="View All"
+                        android:textColor="@color/indigo_dark"
+                        android:textSize="20sp"
+                        android:textStyle="italic"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+                    <TextView
                         android:id="@+id/textView20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -282,6 +297,7 @@
                         android:textColor="@color/indigo_dark"
                         android:textSize="20sp"
                         android:textStyle="italic"
+                        android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/textView20"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView20" />
@@ -308,17 +324,46 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <TextView
+                            android:id="@+id/profileActivity_viewBookmarks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="30dp"
+                            android:text="View All"
+                            android:textColor="@color/indigo_dark"
+                            android:textSize="20sp"
+                            android:textStyle="italic"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView19" />
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/profileActivity_bookmarkRV"
                             android:layout_width="0dp"
-                            android:layout_height="220dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:orientation="horizontal"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView19"
+                            tools:itemCount="1"
                             tools:listitem="@layout/card_item" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/bookmarksNone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="-5dp"
+                        android:text="None"
+                        android:textColor="@color/indigo"
+                        android:textSize="16sp"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/profileActivity_reviewsRV"
@@ -334,6 +379,28 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView20"
                         tools:itemCount="2"
                         tools:listitem="@layout/card_review" />
+
+                    <TextView
+                        android:id="@+id/itemsNone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="None"
+                        android:textColor="@color/indigo"
+                        android:textSize="16sp"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@+id/textView15"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                    <TextView
+                        android:id="@+id/reviewsNone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="None"
+                        android:textColor="@color/indigo"
+                        android:textSize="16sp"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@+id/textView20"
+                        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -394,8 +461,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    app:srcCompat="@drawable/baseline_edit_24"
-                    app:tint="@color/indigo_dark2" />
+                    app:srcCompat="@drawable/icon_chat" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -414,7 +480,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    app:srcCompat="@drawable/baseline_menu_24"
+                    app:srcCompat="@drawable/baseline_grid_view_24"
                     app:tint="@color/indigo_dark2" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

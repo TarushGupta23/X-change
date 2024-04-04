@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -108,8 +109,12 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 }
                 if (reviewList.size() == 0) {
+                    findViewById(R.id.reviewsNone).setVisibility(View.VISIBLE);
                     average = 0;
                 } else {
+                    if (reviewList.size() > 3) {
+                        viewReviews.setVisibility(View.VISIBLE);
+                    }
                     average /= reviewList.size();
                 }
                 DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -139,7 +144,11 @@ public class ProfileActivity extends AppCompatActivity {
                         bookmarkList.add(i);
                     }
                 }
-                bookmarksAdapter = new ProfileBookmarksAdapter(bookmarkList, ProfileActivity.this);
+                TextView bookmarksNone = findViewById(R.id.bookmarksNone);
+                if (bookmarkList.isEmpty()) {
+                    bookmarksNone.setVisibility(View.VISIBLE);
+                }
+                bookmarksAdapter = new ProfileBookmarksAdapter(bookmarkList, ProfileActivity.this, bookmarksNone);
                 bookmarksRV.setLayoutManager(new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 bookmarksRV.setAdapter(bookmarksAdapter);
 
@@ -153,6 +162,9 @@ public class ProfileActivity extends AppCompatActivity {
                 itemsAdapter = new ProfileItemsAdapter(sellingItemList);
                 itemsRV.setLayoutManager(new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 itemsRV.setAdapter(itemsAdapter);
+                if (sellingItemList.size() == 0) {
+                    findViewById(R.id.itemsNone).setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -170,7 +182,4 @@ public class ProfileActivity extends AppCompatActivity {
                 Picasso.get().load(uri).into(bannerImg);
             });
     }
-
-    //TODO: view all reviews - if > 3
-    //  display "none" for 0 items
 }

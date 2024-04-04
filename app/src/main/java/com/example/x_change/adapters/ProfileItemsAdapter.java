@@ -53,10 +53,7 @@ public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapte
         }
 
         void onBindView(SwappingItem item) {
-            bookmarkBtn.setOnClickListener(view -> {
-                // TODO: check if user has those bookmarks and switch
-                //  bookmarkIcon.set(R.drawable.baseline_bookmark_24);
-            });
+            bookmarkBtn.setVisibility(View.INVISIBLE);
             name.setText(item.name);
             // TODO: change image
         }

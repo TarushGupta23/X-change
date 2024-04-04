@@ -25,10 +25,12 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
     private DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId).child("bookmarkIds");
     private ArrayList<SwappingItem> list;
     private Context context;
+    private TextView noneText;
 
-    public ProfileBookmarksAdapter(ArrayList<SwappingItem> list, Context context) {
+    public ProfileBookmarksAdapter(ArrayList<SwappingItem> list, Context context, TextView textView) {
         this.list = list;
         this.context = context;
+        this.noneText = textView;
     }
 
     @NonNull
@@ -56,6 +58,9 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
         }
         reference.setValue(newIds);
         notifyItemRemoved(position);
+        if (list.isEmpty()) {
+            noneText.setVisibility(View.VISIBLE);
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
