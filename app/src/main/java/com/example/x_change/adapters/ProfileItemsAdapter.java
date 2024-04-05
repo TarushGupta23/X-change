@@ -36,7 +36,7 @@ public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapte
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return Math.min(list.size(), SwappingItem.HORIZONTAL_ITEM_COUNT);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

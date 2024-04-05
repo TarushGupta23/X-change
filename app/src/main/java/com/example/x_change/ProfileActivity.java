@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,13 +35,13 @@ import java.util.ArrayList;
 public class ProfileActivity extends AppCompatActivity {
     private String uId = FirebaseAuth.getInstance().getUid();
 
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);
-    private StorageReference storageRef = FirebaseStorage.getInstance().getReference().child(uId);
-    private DatabaseReference reviewReference = FirebaseDatabase.getInstance().getReference().child("reviews");
-    private DatabaseReference itemReference = FirebaseDatabase.getInstance().getReference().child("items");
+    private final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);
+    private final StorageReference storageRef = FirebaseStorage.getInstance().getReference().child(uId);
+    private final DatabaseReference reviewReference = FirebaseDatabase.getInstance().getReference().child("reviews");
+    private final DatabaseReference itemReference = FirebaseDatabase.getInstance().getReference().child("items");
 
     private CardView topLeftBtn, topRightBtn, leftBtn, rightBtn, centerBtn;
-    private TextView name, address, itemCount, avgReview, swapCount, viewReviews;
+    private TextView name, address, itemCount, avgReview, swapCount, viewReviews, viewBookmarks, viewItems;
     private ImageView profileImg, bannerImg;
     private RecyclerView bookmarksRV, itemsRV, reviewsRV;
 
@@ -71,6 +72,8 @@ public class ProfileActivity extends AppCompatActivity {
         bookmarksRV = findViewById(R.id.profileActivity_bookmarkRV);
         itemsRV = findViewById(R.id.profileActivity_itemsRV);
         reviewsRV = findViewById(R.id.profileActivity_reviewsRV);
+        viewBookmarks = findViewById(R.id.profileActivity_viewBookmarks);
+        viewItems = findViewById(R.id.profileActivity_viewItems);
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -91,6 +94,34 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+
+        topLeftBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ChatListActivity.class);
+            startActivity(intent);
+//            finish();
+        });
+
+        topRightBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+//            finish();
+        });
+
+        rightBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, EditProfileActivity.class);
+            startActivity(intent);
+        });
+
+        leftBtn.setOnClickListener(view -> {
+            // TODO create a share btn
+        });
+
+        centerBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddItemActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 
     public void createAdapters() {
@@ -130,7 +161,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        // ---- items and bookmarks
+        // ---- bookmarks
         ArrayList<SwappingItem> bookmarkList = new ArrayList<>();
         ArrayList<SwappingItem> sellingItemList = new ArrayList<>();
 
@@ -151,7 +182,11 @@ public class ProfileActivity extends AppCompatActivity {
                 bookmarksAdapter = new ProfileBookmarksAdapter(bookmarkList, ProfileActivity.this, bookmarksNone);
                 bookmarksRV.setLayoutManager(new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 bookmarksRV.setAdapter(bookmarksAdapter);
+                if (bookmarkList.size() > SwappingItem.HORIZONTAL_ITEM_COUNT) {
+                    viewBookmarks.setVisibility(View.VISIBLE);
+                }
 
+        // ---- items
                 for (String itemId: p.sellingItemIds) {
                     DataSnapshot snap = snapshot.child(itemId);
                     SwappingItem i = snap.getValue(SwappingItem.class);
@@ -164,6 +199,8 @@ public class ProfileActivity extends AppCompatActivity {
                 itemsRV.setAdapter(itemsAdapter);
                 if (sellingItemList.size() == 0) {
                     findViewById(R.id.itemsNone).setVisibility(View.VISIBLE);
+                } else if (sellingItemList.size() > SwappingItem.HORIZONTAL_ITEM_COUNT) {
+                    viewItems.setVisibility(View.VISIBLE);
                 }
             }
 

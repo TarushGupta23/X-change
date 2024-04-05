@@ -47,7 +47,7 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return Math.min(list.size(), SwappingItem.HORIZONTAL_ITEM_COUNT);
     }
 
     void removeItem(int position) {
