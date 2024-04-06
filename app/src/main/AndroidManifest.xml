@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Xchange"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddItemActivity"
             android:exported="false" />
         <activity
