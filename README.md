@@ -9,6 +9,7 @@ Welcome to Xchange, an Android application built to facilitate the swapping of i
 - **Profile Creation**: Once logged in, users can create their profiles, providing information about themselves and the items they are willing to swap.
 - **Item Listing**: Users can view a list of items that other users are willing to swap.
 - **Adding Items**: Users can add items they wish to swap to the platform, making them visible to others.
+- **Reviews**: Users can provide reviews to other users
 
 ## Technologies Used
 
@@ -21,16 +22,14 @@ Welcome to Xchange, an Android application built to facilitate the swapping of i
 
 This project was created by a team during a hackathon event. The team members include:
 
-- [Your Name](https://github.com/your-username)
-- [Team Member 1](https://github.com/team-member-1)
-- [Team Member 2](https://github.com/team-member-2)
-- [Team Member 3](https://github.com/team-member-3)
+- [Tarush Gupta](https://github.com/TarushGupta23)
+- [Naman Tripathi](https://github.com/NamanTripathi937)
 
 ## How to Use
 
 1. **Clone Repository**: Clone this repository to your local machine.
    ```
-   git clone https://github.com/your-username/xchange.git
+   git clone https://github.com/TarushGupta23/xchange.git
    ```
 
 2. **Set Up Firebase**: Set up your Firebase project and configure the necessary services such as Authentication and Realtime Database. Update the Firebase configuration in the project accordingly.
@@ -50,7 +49,3 @@ This project was created by a team during a hackathon event. The team members in
 ## Contributing
 
 Contributions are welcome! If you have any ideas, enhancements, or bug fixes, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
