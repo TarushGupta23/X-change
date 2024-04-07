@@ -1,5 +1,9 @@
 # Xchange Android Application
 
+<img align="right" alt="Loading Screenshots..." width="5%" height="5%" src="https://github.com/TarushGupta23/storage/blob/main/myPagesIcon.png" align="right">
+
+## Overview 
+
 Welcome to Xchange, an Android application built to facilitate the swapping of items between users. Xchange promotes a payment-free environment where users can exchange items they no longer need for items they desire, fostering a sense of community and sustainability.
 
 ## Features
@@ -24,6 +28,12 @@ This project was created by a team during a hackathon event. The team members in
 
 - [Tarush Gupta](https://github.com/TarushGupta23)
 - [Naman Tripathi](https://github.com/NamanTripathi937)
+
+## Screenshots 📸
+| Different Features | Todo List | Counter | Simple List | Others |
+|---------------|---------------|---------------|---------------|---------------|
+| ![Video 1](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid1-ezgif.com-video-to-gif-converter.gif) | ![Video 2](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid4-ezgif.com-video-to-gif-converter.gif) | ![Video 3](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid3-ezgif.com-video-to-gif-converter.gif) | ![Video 4](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid2-ezgif.com-video-to-gif-converter.gif) | ![Video 5](https://github.com/TarushGupta23/storage/blob/main/MyPages/ezgif.com-resize.gif) |
+
 
 ## How to Use
 
