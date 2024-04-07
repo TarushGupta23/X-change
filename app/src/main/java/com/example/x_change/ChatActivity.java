@@ -62,7 +62,7 @@ public class ChatActivity extends AppCompatActivity {
             finish();
         });
         profileImg.setOnClickListener(view-> {
-            Intent intent = new Intent(this, ProfileActivity.class); // TODO - change this activity, and change profile pic
+            Intent intent = new Intent(this, ProfileViewActivity.class);
             intent.putExtra("uId", chatId.replace(uId, ""));
             startActivity(intent);
         });
