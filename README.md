@@ -1,6 +1,6 @@
 # Xchange Android Application
 
-<img align="right" alt="Loading Screenshots..." width="5%" height="5%" src="https://github.com/TarushGupta23/storage/blob/main/myPagesIcon.png" align="right">
+<img align="right" alt="Loading Screenshots..." width="5%" height="5%" src="https://github.com/TarushGupta23/storage/blob/main/Xchange/app_icon.jpeg" align="right">
 
 ## Overview 
 
@@ -30,9 +30,9 @@ This project was created by a team during a hackathon event. The team members in
 - [Naman Tripathi](https://github.com/NamanTripathi937)
 
 ## Screenshots 📸
-| Different Features | Todo List | Counter | Simple List | Others |
+| Create Profile | Swap Items | Login Page | Profile Page | Give Reviews |
 |---------------|---------------|---------------|---------------|---------------|
-| ![Video 1](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid1-ezgif.com-video-to-gif-converter.gif) | ![Video 2](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid4-ezgif.com-video-to-gif-converter.gif) | ![Video 3](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid3-ezgif.com-video-to-gif-converter.gif) | ![Video 4](https://github.com/TarushGupta23/storage/blob/main/MyPages/vid2-ezgif.com-video-to-gif-converter.gif) | ![Video 5](https://github.com/TarushGupta23/storage/blob/main/MyPages/ezgif.com-resize.gif) |
+| ![img1](https://github.com/TarushGupta23/storage/blob/main/Xchange/img1.png) | ![img2](https://github.com/TarushGupta23/storage/blob/main/Xchange/img2.png) | ![Video 3](https://github.com/TarushGupta23/storage/blob/main/Xchange/img3.png) | ![Video 4](https://github.com/TarushGupta23/storage/blob/main/Xchange/img4.png) | ![Video 5](https://github.com/TarushGupta23/storage/blob/main/Xchange/img5.png) |
 
 
 ## How to Use
