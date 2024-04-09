@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.x_change.adapters.ProfileItemsAdapter;
+import com.example.x_change.adapters.ProfileViewItemsAdapter;
 import com.example.x_change.adapters.ReviewsAdapter;
 import com.example.x_change.utility.Profile;
 import com.example.x_change.utility.Review;
@@ -52,13 +53,15 @@ public class ProfileViewActivity extends AppCompatActivity {
     private ImageView profileImg, bannerImg;
     private RecyclerView itemsRV, reviewsRV;
 
-    private ProfileItemsAdapter itemsAdapter;
+    private ProfileViewItemsAdapter itemsAdapter;
     private ReviewsAdapter reviewsAdapter;
     ArrayList<Review> reviewList;
 
     private Profile p;
-
+    private String chatId;
     private boolean reviewGiven = false;
+    private boolean chatExists = false;
+    private ArrayList<String> userChatIds = new ArrayList<>(), bookmarkIds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +89,25 @@ public class ProfileViewActivity extends AppCompatActivity {
         reviewsRV = findViewById(R.id.profileActivity_reviewsRV);
         viewItems = findViewById(R.id.profileActivity_viewItems);
 
+        chatId = currId;
+        if (chatId.compareTo(uId) < 0) {
+            chatId = chatId + uId;
+        } else {
+            chatId = uId + chatId;
+        }
+
+        FirebaseDatabase.getInstance().getReference().child("people").child(currId).child("bookmarkIds").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    if (!snap.getValue().toString().equals("")) { bookmarkIds.add(snap.getValue().toString()); }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -94,6 +116,9 @@ public class ProfileViewActivity extends AppCompatActivity {
                 loadImageFromFirebase();
                 name.setText(p.profileName);
                 address.setText(p.location);
+                chatExists = p.chatsIds.contains(chatId);
+                userChatIds = p.chatsIds;
+
                 if (p.sellingItemIds != null) {
                     itemCount.setText(p.sellingItemIds.size() + "");
                 } else {
@@ -131,15 +156,10 @@ public class ProfileViewActivity extends AppCompatActivity {
             // TODO create a share btn
         });
 
-        centerBtn.setOnClickListener(view -> { // TODO: add chatid in both users and redirect to chatActivity
-            Intent intent = new Intent(this, ChatListActivity.class);
-            String currUId = currId;
-            if (currUId.compareTo(uId) < 0) {
-                currUId = currUId + uId;
-            } else {
-                currUId = uId + currUId;
-            }
-            intent.putExtra("chatId", currUId);
+        centerBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ChatActivity.class);
+            addChatIds(chatId);
+            intent.putExtra("chatId", chatId);
             startActivity(intent);
         });
     }
@@ -197,7 +217,7 @@ public class ProfileViewActivity extends AppCompatActivity {
                         sellingItemList.add(i);
                     }
                 }
-                itemsAdapter = new ProfileItemsAdapter(sellingItemList); // TODO : adapter changes
+                itemsAdapter = new ProfileViewItemsAdapter(sellingItemList, bookmarkIds, ProfileViewActivity.this);
                 itemsRV.setLayoutManager(new LinearLayoutManager(ProfileViewActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 itemsRV.setAdapter(itemsAdapter);
                 if (sellingItemList.size() == 0) {
@@ -210,7 +230,6 @@ public class ProfileViewActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
-
     }
 
     public void loadImageFromFirebase() {
@@ -229,7 +248,7 @@ public class ProfileViewActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_add_review, null);
         EditText msg;
         Button done, cancel;
-        ImageView stars[] = new ImageView[5];
+        ImageView[] stars = new ImageView[5];
         AtomicInteger starCount = new AtomicInteger(); // this is just an integer
 
         msg = dialogView.findViewById(R.id.reviewDialog_msg);
@@ -269,7 +288,17 @@ public class ProfileViewActivity extends AppCompatActivity {
             DatabaseReference newSlot =  reviewReference.push();
             newSlot.setValue(new Review(newSlot.getKey(), currId, text, starCount.get()));
             reference.child("profileId").child(reviewList.size()+"").setValue(newSlot.getKey());
+            alertDialog.dismiss();
         });
         alertDialog.show();
     }
+
+    public void addChatIds(String chatId) {  // TODO: add chat id in both users and redirect to chatActivity
+        if (chatExists) {
+            return;
+        }
+//        reference.child("")
+    }
+
+    // TODO remove chatIds if chat is empty
 }
