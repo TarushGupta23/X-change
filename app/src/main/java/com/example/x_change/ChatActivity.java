@@ -31,7 +31,7 @@ import java.util.Date;
 public class ChatActivity extends AppCompatActivity {
     String chatId;
     String uId = FirebaseAuth.getInstance().getUid();
-    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("chats");
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("chats"); // getting chatId later in code
     ArrayList<Chat> chatList = new ArrayList<>();
     ImageView profileImg, sendBtn;
     CardView backBtn;
@@ -39,6 +39,8 @@ public class ChatActivity extends AppCompatActivity {
     EditText msgField;
     ChatActivityAdapter adapter;
     private final StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    boolean referenceValueChanged = false;
+    ArrayList<String> tempChatIds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class ChatActivity extends AppCompatActivity {
 
         chatId = getIntent().getStringExtra("chatId");
         reference = reference.child(chatId);
+        referenceValueChanged = true;
 
         profileImg = findViewById(R.id.chatActivity_profileImage);
         sendBtn = findViewById(R.id.chatActivity_sendBtn);
@@ -103,4 +106,42 @@ public class ChatActivity extends AppCompatActivity {
             Picasso.get().load(uri).into(profileImg);
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!referenceValueChanged && !snapshot.child(chatId).hasChildren()) {
+                    removeChatIds(uId);
+                    removeChatIds(chatId.replace(uId, ""));
+                } else if (!snapshot.hasChildren()) { // checking if chatId has any Chat child
+                    removeChatIds(uId);
+                    removeChatIds(chatId.replace(uId, ""));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    void removeChatIds(String id) {
+        tempChatIds.clear();
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("people");
+        userReference.child(id).child("chatIds").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    tempChatIds.add(snap.getValue(String.class));
+                }
+                tempChatIds.remove(chatId);
+                userReference.child(uId).child("chatIds").setValue(tempChatIds);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    };
 }

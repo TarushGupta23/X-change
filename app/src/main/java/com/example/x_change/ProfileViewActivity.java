@@ -44,6 +44,7 @@ public class ProfileViewActivity extends AppCompatActivity {
     private String currId = FirebaseAuth.getInstance().getUid();
 
     private DatabaseReference reference;
+    private final DatabaseReference currReference = FirebaseDatabase.getInstance().getReference().child("people").child(currId);
     private StorageReference storageRef;
     private final DatabaseReference reviewReference = FirebaseDatabase.getInstance().getReference().child("reviews");
     private final DatabaseReference itemReference = FirebaseDatabase.getInstance().getReference().child("items");
@@ -61,7 +62,9 @@ public class ProfileViewActivity extends AppCompatActivity {
     private String chatId;
     private boolean reviewGiven = false;
     private boolean chatExists = false;
-    private ArrayList<String> userChatIds = new ArrayList<>(), bookmarkIds = new ArrayList<>();
+    private ArrayList<String> bookmarkIds = new ArrayList<>();
+    private int userChatSize = 0;
+    private int currentChatSize = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,12 +99,13 @@ public class ProfileViewActivity extends AppCompatActivity {
             chatId = uId + chatId;
         }
 
-        FirebaseDatabase.getInstance().getReference().child("people").child(currId).child("bookmarkIds").addListenerForSingleValueEvent(new ValueEventListener() {
+        currReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren()) {
+                for (DataSnapshot snap : snapshot.child("bookmarkIds").getChildren()) {
                     if (!snap.getValue().toString().equals("")) { bookmarkIds.add(snap.getValue().toString()); }
                 }
+                currentChatSize = (int) snapshot.child("chatIds").getChildrenCount();
             }
 
             @Override
@@ -117,7 +121,7 @@ public class ProfileViewActivity extends AppCompatActivity {
                 name.setText(p.profileName);
                 address.setText(p.location);
                 chatExists = p.chatsIds.contains(chatId);
-                userChatIds = p.chatsIds;
+                userChatSize = p.chatsIds.size();
 
                 if (p.sellingItemIds != null) {
                     itemCount.setText(p.sellingItemIds.size() + "");
@@ -293,12 +297,11 @@ public class ProfileViewActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void addChatIds(String chatId) {  // TODO: add chat id in both users and redirect to chatActivity
+    public void addChatIds(String chatId) {
         if (chatExists) {
             return;
         }
-//        reference.child("")
+        reference.child("chatIds").child("" + userChatSize).setValue(chatId);
+        currReference.child("chatIds").child("" + currentChatSize).setValue(chatId);
     }
-
-    // TODO remove chatIds if chat is empty
 }
