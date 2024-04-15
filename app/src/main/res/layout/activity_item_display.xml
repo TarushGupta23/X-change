@@ -114,7 +114,7 @@
                         android:layout_marginEnd="15dp"
                         app:layout_constraintBottom_toBottomOf="@+id/itemDisplay_location"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/baseline_bookmark_24" />
+                        app:srcCompat="@drawable/baseline_bookmark_border_24" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
