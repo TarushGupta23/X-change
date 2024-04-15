@@ -1,5 +1,7 @@
 package com.example.x_change.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +12,26 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.x_change.ItemsDisplayActivity;
 import com.example.x_change.R;
 import com.example.x_change.utility.SwappingItem;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.ViewHolder> {
     private ArrayList<SwappingItem> list;
+    Context context;
+    private static ArrayList<String> bookmarkIds;
 
-    public MainActivityAdapter(ArrayList<SwappingItem> list) {
+    public MainActivityAdapter(ArrayList<SwappingItem> list, Context context, ArrayList<String> bookmarkIds) {
         this.list = list;
+        this.context = context;
+        MainActivityAdapter.bookmarkIds = bookmarkIds;
     }
 
     @NonNull
@@ -31,7 +43,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBindView(list.get(position));
+        holder.onBindView(list.get(position), context);
     }
 
     @Override
@@ -52,13 +64,31 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             bookmarkBtn = itemView.findViewById(R.id.itemCard_bookmarkBtn);
         }
 
-        void onBindView(SwappingItem item) {
+        void onBindView(SwappingItem item, Context context) {
+            if (bookmarkIds.contains(item.itemId)) {
+                bookmarkIcon.setImageResource(R.drawable.baseline_bookmark_24);
+            }
             bookmarkBtn.setOnClickListener(view -> {
-                // TODO: check if user has those bookmarks and switch
-                //  bookmarkIcon.set(R.drawable.baseline_bookmark_24);
+                if (bookmarkIds.contains(item.itemId)) {
+                    bookmarkIcon.setImageResource(R.drawable.baseline_bookmark_border_24);
+                    bookmarkIds.remove(item.itemId);
+                } else {
+                    bookmarkIds.add(item.itemId);
+                    bookmarkIcon.setImageResource(R.drawable.baseline_bookmark_24);
+                }
+                FirebaseDatabase.getInstance().getReference().child("people").child(FirebaseAuth.getInstance().getUid())
+                        .child("bookmarkIds").setValue(bookmarkIds);
             });
+
             name.setText(item.name);
-            // TODO: change image
+            FirebaseStorage.getInstance().getReference().child(item.itemId).child("mainImg").getDownloadUrl().addOnSuccessListener(uri -> {
+                Picasso.get().load(uri).into(image);
+            });
+            image.setOnClickListener(view -> {
+                Intent intent = new Intent(context, ItemsDisplayActivity.class);
+                intent.putExtra("itemId", item.itemId);
+                context.startActivity(intent);
+            });
         }
     }
 }
