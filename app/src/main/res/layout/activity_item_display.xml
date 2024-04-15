@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView17"
+                    android:id="@+id/itemDisplay_mainItemImg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -59,7 +59,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView24"
+                        android:id="@+id/itemDisplay_itemName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -76,7 +76,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView25"
+                        android:id="@+id/itemDisplay_location"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="-4dp"
@@ -89,11 +89,11 @@
                         android:textColor="@color/indigo"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView18"
-                        app:layout_constraintStart_toStartOf="@+id/textView24" />
+                        app:layout_constraintEnd_toStartOf="@+id/itemDisplay_bookmark"
+                        app:layout_constraintStart_toStartOf="@+id/itemDisplay_itemName" />
 
                     <TextView
-                        android:id="@+id/textView26"
+                        android:id="@+id/itemDisplay_profileName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -102,17 +102,17 @@
                         android:textColor="@color/indigo"
                         android:textSize="18sp"
                         android:textStyle="italic"
-                        app:layout_constraintBottom_toTopOf="@+id/textView25"
-                        app:layout_constraintEnd_toEndOf="@+id/textView25"
-                        app:layout_constraintStart_toStartOf="@+id/textView24"
-                        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                        app:layout_constraintBottom_toTopOf="@+id/itemDisplay_location"
+                        app:layout_constraintEnd_toEndOf="@+id/itemDisplay_location"
+                        app:layout_constraintStart_toStartOf="@+id/itemDisplay_itemName"
+                        app:layout_constraintTop_toBottomOf="@+id/itemDisplay_itemName" />
 
                     <ImageView
-                        android:id="@+id/imageView18"
+                        android:id="@+id/itemDisplay_bookmark"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="15dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                        app:layout_constraintBottom_toBottomOf="@+id/itemDisplay_location"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/baseline_bookmark_24" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -130,11 +130,11 @@
                 app:layout_constraintEnd_toStartOf="@+id/cardView7">
 
                 <ImageView
-                    android:id="@+id/chat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/itemDisplay_profilePic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/del_sample_3" />
+                    app:srcCompat="@drawable/baseline_person_24" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -153,7 +153,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView7" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/itemDisplay_lookingFor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -173,13 +173,13 @@
                 android:text="Looking For"
                 android:textColor="@color/indigo"
                 android:textStyle="bold|italic"
-                app:layout_constraintEnd_toEndOf="@+id/textView101"
+                app:layout_constraintEnd_toEndOf="@+id/itemDisplay_description"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView101"
-                app:layout_constraintTop_toBottomOf="@+id/textView101" />
+                app:layout_constraintStart_toStartOf="@+id/itemDisplay_description"
+                app:layout_constraintTop_toBottomOf="@+id/itemDisplay_description" />
 
             <TextView
-                android:id="@+id/textView101"
+                android:id="@+id/itemDisplay_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -192,17 +192,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/itemDisplay_swapBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="Swap Now"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView29"
-                app:layout_constraintEnd_toEndOf="@+id/textView28"
+                app:layout_constraintBottom_toBottomOf="@+id/itemDisplay_value"
+                app:layout_constraintEnd_toEndOf="@+id/itemDisplay_lookingFor"
                 app:layout_constraintTop_toTopOf="@+id/textView30" />
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/itemDisplay_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -222,11 +222,11 @@
                 android:text="Value"
                 android:textColor="@color/indigo"
                 android:textStyle="bold|italic"
-                app:layout_constraintStart_toStartOf="@+id/textView28"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView4" />
+                app:layout_constraintStart_toStartOf="@+id/itemDisplay_lookingFor"
+                app:layout_constraintTop_toBottomOf="@+id/itemDisplay_recyclerView" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView4"
+                android:id="@+id/itemDisplay_recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_marginStart="5dp"
@@ -247,8 +247,8 @@
                 android:textColor="@color/indigo"
                 android:textStyle="bold|italic"
                 android:text="Images"
-                app:layout_constraintStart_toStartOf="@+id/textView28"
-                app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                app:layout_constraintStart_toStartOf="@+id/itemDisplay_lookingFor"
+                app:layout_constraintTop_toBottomOf="@+id/itemDisplay_lookingFor" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
