@@ -480,8 +480,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    app:srcCompat="@drawable/baseline_grid_view_24"
-                    app:tint="@color/indigo_dark2" />
+                    app:srcCompat="@drawable/icon_menu" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

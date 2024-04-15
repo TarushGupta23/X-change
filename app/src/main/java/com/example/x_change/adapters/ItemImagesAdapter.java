@@ -1,5 +1,6 @@
 package com.example.x_change.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,18 +22,19 @@ public class ItemImagesAdapter extends RecyclerView.Adapter<ItemImagesAdapter.Vi
 
     public ItemImagesAdapter(ArrayList<String> imgIds, String itemId) {
         this.imgIds = imgIds;
-        this.itemId = itemId;
+        ItemImagesAdapter.itemId = itemId;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null; //TODO
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_image, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.onBind(position);
     }
 
     @Override
