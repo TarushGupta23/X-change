@@ -69,7 +69,7 @@ public class ProfileViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_view);
 
         uId = getIntent().getStringExtra("uId");
         reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);

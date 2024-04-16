@@ -1,5 +1,7 @@
 package com.example.x_change.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +12,21 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.x_change.ItemsDisplayActivity;
 import com.example.x_change.R;
 import com.example.x_change.utility.SwappingItem;
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapter.ViewHolder> {
     private ArrayList<SwappingItem> list;
+    Context context;
 
-    public ProfileItemsAdapter(ArrayList<SwappingItem> list) {
+    public ProfileItemsAdapter(ArrayList<SwappingItem> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +38,7 @@ public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBindView(list.get(position));
+        holder.onBindView(list.get(position), context);
     }
 
     @Override
@@ -52,10 +59,17 @@ public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapte
             bookmarkBtn = itemView.findViewById(R.id.itemCard_bookmarkBtn);
         }
 
-        void onBindView(SwappingItem item) {
+        void onBindView(SwappingItem item, Context context) {
             bookmarkBtn.setVisibility(View.INVISIBLE);
             name.setText(item.name);
-            // TODO: change image
+            FirebaseStorage.getInstance().getReference().child(item.itemId).child("mainImg").getDownloadUrl().addOnSuccessListener(uri -> {
+                Picasso.get().load(uri).into(image);
+            });
+            image.setOnClickListener(view -> {
+                Intent intent = new Intent(context, ItemsDisplayActivity.class);
+                intent.putExtra("itemId", item.itemId);
+                context.startActivity(intent);
+            });
         }
     }
 }

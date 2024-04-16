@@ -48,7 +48,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return Math.min(list.size(), SwappingItem.MAIN_ACTIVITY_DISPLAY_COUNT);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

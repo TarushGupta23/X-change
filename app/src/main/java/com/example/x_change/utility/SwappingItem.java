@@ -3,7 +3,7 @@ package com.example.x_change.utility;
 import java.util.ArrayList;
 
 public class SwappingItem {
-    public static final int HORIZONTAL_ITEM_COUNT = 8;
+    public static final int HORIZONTAL_ITEM_COUNT = 8, MAIN_ACTIVITY_DISPLAY_COUNT = 100;
     public String name, itemId, sellerId, description, lookingFor, value;
     public ArrayList<String> images = new ArrayList<>();
     public String mainImage;

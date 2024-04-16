@@ -1,6 +1,7 @@
 package com.example.x_change.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.x_change.ItemsDisplayActivity;
 import com.example.x_change.R;
 import com.example.x_change.utility.SwappingItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -83,7 +87,14 @@ public class ProfileBookmarksAdapter extends RecyclerView.Adapter<ProfileBookmar
                 removeItem(position);
             });
             name.setText(item.name);
-            // TODO: change image
+            FirebaseStorage.getInstance().getReference().child(item.itemId).child("mainImg").getDownloadUrl().addOnSuccessListener(uri -> {
+                Picasso.get().load(uri).into(image);
+            });
+            image.setOnClickListener(view -> {
+                Intent intent = new Intent(context, ItemsDisplayActivity.class);
+                intent.putExtra("itemId", item.itemId);
+                context.startActivity(intent);
+            });
         }
     }
 }

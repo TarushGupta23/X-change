@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         profileCard = findViewById(R.id.mainActivity_profileCard);
         recyclerView = findViewById(R.id.mainActivity_recyclerView);
 
-        chatCard.setOnClickListener(view -> {
+        chatCard.setOnClickListener(view -> { // go to chat list activity
             Intent intent = new Intent(this, ChatListActivity.class);
             startActivity(intent);
             finish();
         });
 
-        profileCard.setOnClickListener(view -> {
+        profileCard.setOnClickListener(view -> { // go to profile activity
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
             finish();
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MainActivityAdapter(list, this, bookmarkIds);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("items");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() { // update items list for RV
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        updateBookmarkIds(bookmarkIds);
+        updateBookmarkIds(bookmarkIds); // update bookmark list to check which items are bookmarked
 
         recyclerView.setAdapter(adapter);
     }

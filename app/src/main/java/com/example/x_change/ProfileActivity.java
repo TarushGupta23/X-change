@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.x_change.adapters.ProfileBookmarksAdapter;
 import com.example.x_change.adapters.ProfileItemsAdapter;
@@ -75,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         viewBookmarks = findViewById(R.id.profileActivity_viewBookmarks);
         viewItems = findViewById(R.id.profileActivity_viewItems);
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() { // fetch basic user data from firebase
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 p = snapshot.getValue(Profile.class);
@@ -95,33 +94,46 @@ public class ProfileActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        topLeftBtn.setOnClickListener(view -> {
+        topLeftBtn.setOnClickListener(view -> { // start chat list activity
             Intent intent = new Intent(this, ChatListActivity.class);
             startActivity(intent);
-//            finish();
+            finish();
         });
 
-        topRightBtn.setOnClickListener(view -> {
+        topRightBtn.setOnClickListener(view -> { // start main activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-//            finish();
+            finish();
         });
 
-        rightBtn.setOnClickListener(view -> {
+        rightBtn.setOnClickListener(view -> { // edit profile btn
             Intent intent = new Intent(this, EditProfileActivity.class);
             startActivity(intent);
         });
 
-        leftBtn.setOnClickListener(view -> {
+        leftBtn.setOnClickListener(view -> { // share profile btn
             // TODO create a share btn
         });
 
-        centerBtn.setOnClickListener(view -> {
+        centerBtn.setOnClickListener(view -> { // add item activity
             Intent intent = new Intent(this, AddItemActivity.class);
             startActivity(intent);
         });
 
+        viewReviews.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AllReviewsActivity.class);
+            startActivity(intent);
+        });
 
+        viewBookmarks.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AllItemsActivity.class);
+            startActivity(intent);
+        });
+
+        viewItems.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AllItemsActivity.class);
+            startActivity(intent);
+        });
     }
 
     public void createAdapters() {
@@ -194,7 +206,7 @@ public class ProfileActivity extends AppCompatActivity {
                         sellingItemList.add(i);
                     }
                 }
-                itemsAdapter = new ProfileItemsAdapter(sellingItemList);
+                itemsAdapter = new ProfileItemsAdapter(sellingItemList, ProfileActivity.this);
                 itemsRV.setLayoutManager(new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 itemsRV.setAdapter(itemsAdapter);
                 if (sellingItemList.size() == 0) {
@@ -210,7 +222,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void loadImageFromFirebase() {
+    public void loadImageFromFirebase() { // load banner and profile pic
         storageRef.child("userProfileImage").getDownloadUrl().addOnSuccessListener(uri -> {
                 Picasso.get().load(uri).into(profileImg);
             });
