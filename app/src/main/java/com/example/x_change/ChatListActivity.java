@@ -40,18 +40,18 @@ public class ChatListActivity extends AppCompatActivity {
         menuBtn = findViewById(R.id.chatList_menuBtn);
         profileBtn = findViewById(R.id.chatList_profileBtn);
 
-        menuBtn.setOnClickListener(view -> {
+        menuBtn.setOnClickListener(view -> { // go to main activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-//            finish();
+            finish();
         });
-        profileBtn.setOnClickListener(view -> {
+        profileBtn.setOnClickListener(view -> { // go to profile page
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
-//            finish();
+            finish();
         });
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() { // gather list of chats
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren()) {

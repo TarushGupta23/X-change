@@ -40,8 +40,8 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ProfileViewActivity extends AppCompatActivity {
-    private String uId;
-    private String currId = FirebaseAuth.getInstance().getUid();
+    private String uId; // view user
+    private String currId = FirebaseAuth.getInstance().getUid(); // login user
 
     private DatabaseReference reference;
     private final DatabaseReference currReference = FirebaseDatabase.getInstance().getReference().child("people").child(currId);
@@ -72,6 +72,13 @@ public class ProfileViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_view);
 
         uId = getIntent().getStringExtra("uId");
+
+        if (uId.equals(currId)) {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         reference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);
         storageRef = FirebaseStorage.getInstance().getReference().child(uId);
 
@@ -102,17 +109,17 @@ public class ProfileViewActivity extends AppCompatActivity {
         currReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.child("bookmarkIds").getChildren()) {
+                for (DataSnapshot snap : snapshot.child("bookmarkIds").getChildren()) { // get bookmarks of login user for the items adapter
                     if (!snap.getValue().toString().equals("")) { bookmarkIds.add(snap.getValue().toString()); }
                 }
-                currentChatSize = (int) snapshot.child("chatIds").getChildrenCount();
+                currentChatSize = (int) snapshot.child("chatIds").getChildrenCount(); // current chat size is used to generate new chat for login user
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() { // getting view user data
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 p = snapshot.getValue(Profile.class);
@@ -136,19 +143,19 @@ public class ProfileViewActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        topLeftBtn.setOnClickListener(view -> {
+        topLeftBtn.setOnClickListener(view -> { // chat list
             Intent intent = new Intent(this, ChatListActivity.class);
             startActivity(intent);
             finish();
         });
 
-        topRightBtn.setOnClickListener(view -> {
+        topRightBtn.setOnClickListener(view -> { // main activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         });
 
-        rightBtn.setOnClickListener(view -> {
+        rightBtn.setOnClickListener(view -> { // show review dialog
             if (!reviewGiven) {
                 reviewDialog();
             } else {
@@ -160,7 +167,7 @@ public class ProfileViewActivity extends AppCompatActivity {
             // TODO create a share btn
         });
 
-        centerBtn.setOnClickListener(view -> {
+        centerBtn.setOnClickListener(view -> { // chat activity
             Intent intent = new Intent(this, ChatActivity.class);
             addChatIds(chatId);
             intent.putExtra("chatId", chatId);

@@ -61,15 +61,16 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        backBtn.setOnClickListener(view -> {
+        backBtn.setOnClickListener(view -> { // end activity
             finish();
         });
-        profileImg.setOnClickListener(view-> {
+        profileImg.setOnClickListener(view-> { // go to profile page
             Intent intent = new Intent(this, ProfileViewActivity.class);
             intent.putExtra("uId", chatId.replace(uId, ""));
             startActivity(intent);
+            finish();
         });
-        sendBtn.setOnClickListener(view -> {
+        sendBtn.setOnClickListener(view -> { // push message to database
             String msg = msgField.getText().toString();
             msg = msg.trim();
             if (msg.isEmpty()) {
@@ -83,7 +84,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() { // constant updateing
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chatList.clear();
@@ -101,19 +102,19 @@ public class ChatActivity extends AppCompatActivity {
         loadImageFromFirebase();
     }
 
-    public void loadImageFromFirebase() {
+    public void loadImageFromFirebase() { // set user image
         storageRef.child(chatId.replace(uId, "")).child("userProfileImage").getDownloadUrl().addOnSuccessListener(uri -> {
             Picasso.get().load(uri).into(profileImg);
         });
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { // if chat is empty then delete it
         super.onBackPressed();
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!referenceValueChanged && !snapshot.child(chatId).hasChildren()) {
+                if (!referenceValueChanged && !snapshot.child(chatId).hasChildren()) { // just in case when user quickly opened and closed chat activity
                     removeChatIds(uId);
                     removeChatIds(chatId.replace(uId, ""));
                 } else if (!snapshot.hasChildren()) { // checking if chatId has any Chat child
@@ -127,7 +128,7 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    void removeChatIds(String id) {
+    void removeChatIds(String id) { // remove reference of chat ids from both users
         tempChatIds.clear();
         DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("people");
         userReference.child(id).child("chatIds").addListenerForSingleValueEvent(new ValueEventListener() {

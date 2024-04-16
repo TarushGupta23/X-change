@@ -52,9 +52,8 @@
                     android:id="@+id/imageView22"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:tint="@color/indigo_dark"
                     android:padding="7dp"
-                    app:srcCompat="@drawable/baseline_grid_view_24" />
+                    app:srcCompat="@drawable/icon_menu" />
 
             </androidx.cardview.widget.CardView>
 

@@ -50,8 +50,8 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String chatId = chatIdList.get(position);
-        String senderId = chatId.replace(uId, "");
-        reference.child(chatId).addListenerForSingleValueEvent(new ValueEventListener() {
+        String senderId = chatId.replace(uId, ""); // get id of person with whom we are chatting
+        reference.child(chatId).addListenerForSingleValueEvent(new ValueEventListener() { // getting chat data
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DataSnapshot snap = snapshot.child((snapshot.getChildrenCount()-1)+""); // getting the last chat item
@@ -123,6 +123,3 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
         }
     }
 }
-
-// TODO: add click listener to sent to next activity
-//  add top buttons for home and profile

@@ -24,7 +24,8 @@
             android:id="@+id/chatWithCard_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/baseline_person_24" />
     </androidx.cardview.widget.CardView>
 
     <TextView

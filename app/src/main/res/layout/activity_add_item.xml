@@ -55,8 +55,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/del_sample_2" />
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView

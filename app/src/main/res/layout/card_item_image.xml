@@ -22,7 +22,6 @@
             android:id="@+id/cardItemImage_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/del_sample_1" />
+            android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

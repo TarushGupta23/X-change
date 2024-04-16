@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class ItemsDisplayActivity extends AppCompatActivity {
         reference = reference.child(itemId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        bookmarkReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        bookmarkReference.addListenerForSingleValueEvent(new ValueEventListener() { // check if user has bookmarked the current item
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String bId = "";
@@ -79,13 +80,12 @@ public class ItemsDisplayActivity extends AppCompatActivity {
                     if (itemBookmarked) {
                         bookmark.setImageResource(R.drawable.baseline_bookmark_border_24);
                         bookmarks.remove(itemId);
-                        bookmarkReference.setValue(bookmarks);
                     } else {
                         bookmark.setImageResource(R.drawable.baseline_bookmark_24);
                         bookmarks.remove(itemId);
                         bookmarks.add(itemId);
-                        bookmarkReference.setValue(bookmarks);
                     }
+                    bookmarkReference.setValue(bookmarks);
                     itemBookmarked = !itemBookmarked;
                 });
             }
@@ -93,7 +93,7 @@ public class ItemsDisplayActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() { // get basic item data
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 item = snapshot.getValue(SwappingItem.class);
@@ -102,37 +102,57 @@ public class ItemsDisplayActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    itemName.setText(item.name);
-                    sellerReference = sellerReference.child(item.sellerId);
+                    updateItemData(item);
+                    setImages(item);
 
-                    description.setText(item.description);
-                    lookingFor.setText(item.lookingFor);
-                    value.setText(item.value);
-                    recyclerView.setAdapter(new ItemImagesAdapter(item.images, item.itemId));
-                    FirebaseStorage.getInstance().getReference().child(item.sellerId).child("userProfileImage").getDownloadUrl().addOnSuccessListener(uri -> {
-                        Picasso.get().load(uri).into(profileImg);
+                    mainImg.setOnClickListener(view -> { // go to profile view
+                        Intent intent = new Intent(ItemsDisplayActivity.this, ProfileViewActivity.class);
+                        intent.putExtra("uId", item.sellerId);
+                        startActivity(intent);
                     });
-                    FirebaseStorage.getInstance().getReference().child(item.itemId).child("mainImg").getDownloadUrl().addOnSuccessListener(uri -> {
-                        Picasso.get().load(uri).into(mainImg);
-                    });
-                    sellerReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Profile sellerProfile = snapshot.getValue(Profile.class);
-                            if (sellerProfile != null) {
-                                profileName.setText(sellerProfile.profileName);
-                                location.setText(sellerProfile.location);
 
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {}
-                    });
+                    updateSellerData();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+    }
+
+    void setImages(SwappingItem item) {
+        FirebaseStorage.getInstance().getReference().child(item.sellerId).child("userProfileImage").getDownloadUrl().addOnSuccessListener(uri -> {
+            Picasso.get().load(uri).into(profileImg);
+        });
+        FirebaseStorage.getInstance().getReference().child(item.itemId).child("mainImg").getDownloadUrl().addOnSuccessListener(uri -> {
+            Picasso.get().load(uri).into(mainImg);
+        });
+    }
+
+    void updateSellerData() {
+        sellerReference.addListenerForSingleValueEvent(new ValueEventListener() { // seller data
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Profile sellerProfile = snapshot.getValue(Profile.class);
+                if (sellerProfile != null) {
+                    profileName.setText(sellerProfile.profileName);
+                    location.setText(sellerProfile.location);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    void updateItemData(SwappingItem item) {
+        itemName.setText(item.name);
+        sellerReference = sellerReference.child(item.sellerId);
+        description.setText(item.description);
+        lookingFor.setText(item.lookingFor);
+        value.setText(item.value);
+        recyclerView.setAdapter(new ItemImagesAdapter(item.images, item.itemId));
+        if (item.images.size() == 0) {
+            recyclerView.setVisibility(View.GONE);
+        }
     }
 }
