@@ -85,6 +85,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter name and location", Toast.LENGTH_SHORT).show();
             } else {
                 reference.setValue(p);
+                uploadPic();
             }
         });
 
