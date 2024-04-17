@@ -39,7 +39,6 @@ public class CreateProfileActivity extends AppCompatActivity {
     private ImageView imageView;
     private StorageReference storage = FirebaseStorage.getInstance().getReference().child(uId);
     private boolean isImageSet = false;
-    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
