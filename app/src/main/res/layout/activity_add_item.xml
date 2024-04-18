@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView10"
+                android:id="@+id/addItem_addImg"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="-20dp"
@@ -52,7 +52,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/addItem_mainImg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop" />
@@ -76,7 +76,7 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/editTextText"
+                        android:id="@+id/addItem_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="30dp"
@@ -90,12 +90,12 @@
                         android:inputType="text"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="10dp"
-                        app:layout_constraintEnd_toStartOf="@+id/editTextText4"
+                        app:layout_constraintEnd_toStartOf="@+id/addItem_value"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editTextText2"
+                        android:id="@+id/addItem_description"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="30dp"
@@ -109,12 +109,12 @@
                         android:inputType="text"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="10dp"
-                        app:layout_constraintEnd_toEndOf="@+id/editTextText4"
-                        app:layout_constraintStart_toStartOf="@+id/editTextText"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+                        app:layout_constraintEnd_toEndOf="@+id/addItem_value"
+                        app:layout_constraintStart_toStartOf="@+id/addItem_name"
+                        app:layout_constraintTop_toBottomOf="@+id/addItem_name" />
 
                     <EditText
-                        android:id="@+id/editTextText3"
+                        android:id="@+id/addItem_lookingFor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="30dp"
@@ -128,12 +128,12 @@
                         android:inputType="text"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="10dp"
-                        app:layout_constraintEnd_toEndOf="@+id/editTextText4"
-                        app:layout_constraintStart_toStartOf="@+id/editTextText"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+                        app:layout_constraintEnd_toEndOf="@+id/addItem_value"
+                        app:layout_constraintStart_toStartOf="@+id/addItem_name"
+                        app:layout_constraintTop_toBottomOf="@+id/addItem_description" />
 
                     <EditText
-                        android:id="@+id/editTextText4"
+                        android:id="@+id/addItem_value"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="30dp"
@@ -146,31 +146,31 @@
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="10dp"
                         android:textAlignment="center"
-                        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
+                        app:layout_constraintBottom_toBottomOf="@+id/addItem_name"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/editTextText" />
+                        app:layout_constraintTop_toTopOf="@+id/addItem_name" />
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/addItem_cancel"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="15dp"
                         android:text="cancel"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/editTextText3"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+                        app:layout_constraintStart_toStartOf="@+id/addItem_lookingFor"
+                        app:layout_constraintTop_toBottomOf="@+id/addItem_lookingFor" />
 
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/addItem_add"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="15dp"
                         android:text="add"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/editTextText3"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+                        app:layout_constraintEnd_toEndOf="@+id/addItem_lookingFor"
+                        app:layout_constraintTop_toBottomOf="@+id/addItem_lookingFor" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,6 +188,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView8">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/addItem_RV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:itemCount="1"
