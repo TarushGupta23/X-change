@@ -3,6 +3,7 @@ package com.example.x_change;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.x_change.adapters.ItemImageUriAdapter;
 import com.example.x_change.utility.SwappingItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -27,13 +29,16 @@ public class AddItemActivity extends AppCompatActivity {
     boolean mainImgAdded = false;
     Uri mainImgUri;
     ArrayList<Uri> imageUris = new ArrayList<>();
+    ArrayList<String> imgList = new ArrayList<>();
+    ItemImageUriAdapter adapter;
+
     Button addBtn, cancelBtn;
     CardView addImageBtn;
     ImageView mainImg;
     RecyclerView recyclerView;
     EditText name, value, description, lookingFor;
+
     final int MAIN_IMG_REQ = 5, IMG_REQ = 6;
-    ArrayList<String> imgList = new ArrayList<>();
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("items");
     StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
@@ -51,6 +56,10 @@ public class AddItemActivity extends AppCompatActivity {
         value = findViewById(R.id.addItem_value);
         description = findViewById(R.id.addItem_description);
         lookingFor = findViewById(R.id.addItem_lookingFor);
+
+        adapter = new ItemImageUriAdapter(imageUris);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         cancelBtn.setOnClickListener(view -> {
             finish();
@@ -108,7 +117,7 @@ public class AddItemActivity extends AppCompatActivity {
         } else {
             imageUris.add(data.getData());
             imgList.add((imgList.size() - 1) + "");
-            // TODO : create adapter and add item uri
+            adapter.notifyItemChanged(imageUris.size() - 1);
         }
     }
 
