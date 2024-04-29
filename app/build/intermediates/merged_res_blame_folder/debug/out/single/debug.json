@@ -4,32 +4,48 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_person_24.xml.flat",
-        "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_person_24.xml"
-    },
-    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_illustration_1.png.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/illustration_1.png"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_person_24.xml.flat",
+        "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_person_24.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_del_sample_2.jpeg.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/del_sample_2.jpeg"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_card_item.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/card_item.xml"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/xml_data_extraction_rules.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/drawable_illustration_4.png.flat",
+        "source": "com.example.x_change.app-main-38:/drawable/illustration_4.png"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_add_item.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_add_item.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_menu_24.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_menu_24.xml"
     },
     {
-        "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_share_24.xml.flat",
-        "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_share_24.xml"
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_item_display.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_item_display.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/layout_card_item_image.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/layout/card_item_image.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_share_24.xml.flat",
+        "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_share_24.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/layout_activity_main.xml.flat",
@@ -84,6 +100,10 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/border_bottom.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_card_item_image.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/card_item_image.xml"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_illustration_2.png.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/illustration_2.png"
     },
@@ -110,6 +130,10 @@
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_call_24.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_call_24.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/drawable_baseline_add_photo_alternate_24.xml.flat",
+        "source": "com.example.x_change.app-main-38:/drawable/baseline_add_photo_alternate_24.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/mipmap-xhdpi_ic_launcher.webp.flat",
@@ -148,6 +172,10 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_lock_24.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_card_chat_with.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/card_chat_with.xml"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_side_margins.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/side_margins.xml"
     },
@@ -160,8 +188,20 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_bookmark_24.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_profile_view.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_profile_view.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/drawable_start_image.png.flat",
+        "source": "com.example.x_change.app-main-38:/drawable/start_image.png"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/mipmap-anydpi_ic_launcher.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_dialog_add_review.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/dialog_add_review.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/layout_chat_sent.xml.flat",
@@ -172,6 +212,10 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/layout/activity_welcome.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/drawable_start_image_flip.png.flat",
+        "source": "com.example.x_change.app-main-38:/drawable/start_image_flip.png"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -180,12 +224,32 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/layout/activity_item_display.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/drawable_baseline_grid_view_24.xml.flat",
+        "source": "com.example.x_change.app-main-38:/drawable/baseline_grid_view_24.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_all_items.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_all_items.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/drawable_baseline_logout_24.xml.flat",
+        "source": "com.example.x_change.app-main-38:/drawable/baseline_logout_24.xml"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_bookmark_border_24.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_bookmark_border_24.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_chat_list.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_chat_list.xml"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_location_on_24.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_location_on_24.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_chat.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_chat.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_ic_launcher_foreground.xml.flat",
@@ -208,8 +272,16 @@
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_star_24.xml"
     },
     {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_edit_profile.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_edit_profile.xml"
+    },
+    {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_star_border_24.xml.flat",
         "source": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-main-38:/drawable/baseline_star_border_24.xml"
+    },
+    {
+        "merged": "com.example.x_change.app-merged_res-36:/layout_activity_all_reviews.xml.flat",
+        "source": "com.example.x_change.app-main-38:/layout/activity_all_reviews.xml"
     },
     {
         "merged": "/Users/apple/.gradle/daemon/8.0/com.example.x_change.app-merged_res-36:/drawable_baseline_edit_24.xml.flat",

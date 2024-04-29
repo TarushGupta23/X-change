@@ -9,10 +9,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Xchange"
-        android:screenOrientation="portrait"
         tools:targetApi="31">
+        <activity
+            android:name=".AllBookmarksActivity"
+            android:exported="false" />
         <activity
             android:name=".AllItemsActivity"
             android:exported="false" />

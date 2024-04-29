@@ -122,16 +122,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         viewReviews.setOnClickListener(view -> {
             Intent intent = new Intent(this, AllReviewsActivity.class);
+            intent.putExtra("uId", uId);
             startActivity(intent);
         });
 
         viewBookmarks.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AllItemsActivity.class);
+            Intent intent = new Intent(this, AllBookmarksActivity.class);
+//            intent.putExtra("uId", uId);
             startActivity(intent);
         });
 
         viewItems.setOnClickListener(view -> {
             Intent intent = new Intent(this, AllItemsActivity.class);
+            intent.putExtra("uId", uId);
             startActivity(intent);
         });
     }

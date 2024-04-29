@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.x_change.adapters.ProfileItemsAdapter;
 import com.example.x_change.adapters.ProfileViewItemsAdapter;
 import com.example.x_change.adapters.ReviewsAdapter;
 import com.example.x_change.utility.Profile;
@@ -171,6 +170,18 @@ public class ProfileViewActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ChatActivity.class);
             addChatIds(chatId);
             intent.putExtra("chatId", chatId);
+            startActivity(intent);
+        });
+
+        viewReviews.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AllReviewsActivity.class);
+            intent.putExtra("uId", uId);
+            startActivity(intent);
+        });
+
+        viewItems.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AllItemsActivity.class);
+            intent.putExtra("uId", uId);
             startActivity(intent);
         });
     }

@@ -18,7 +18,6 @@ import com.example.x_change.utility.SwappingItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -27,11 +26,20 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
     private ArrayList<SwappingItem> list;
     Context context;
     private static ArrayList<String> bookmarkIds;
+    boolean viewingAllItems = false, isCurrUser = false;
 
     public MainActivityAdapter(ArrayList<SwappingItem> list, Context context, ArrayList<String> bookmarkIds) {
         this.list = list;
         this.context = context;
         MainActivityAdapter.bookmarkIds = bookmarkIds;
+    }
+
+    public MainActivityAdapter(ArrayList<SwappingItem> list, Context context, ArrayList<String> bookmarkIds, boolean isCurrUser) { //NOTE: passing isCurrentUser as an arg means you are viewing all items of some seller
+        this.list = list;
+        this.context = context;
+        MainActivityAdapter.bookmarkIds = bookmarkIds;
+        this.viewingAllItems = true;
+        this.isCurrUser = isCurrUser;
     }
 
     @NonNull
@@ -43,11 +51,12 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBindView(list.get(position), context);
+        holder.onBindView(list.get(position), context, viewingAllItems, isCurrUser);
     }
 
     @Override
     public int getItemCount() {
+        if (viewingAllItems) { return list.size(); }
         return Math.min(list.size(), SwappingItem.MAIN_ACTIVITY_DISPLAY_COUNT);
     }
 
@@ -64,7 +73,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             bookmarkBtn = itemView.findViewById(R.id.itemCard_bookmarkBtn);
         }
 
-        void onBindView(SwappingItem item, Context context) {
+        void onBindView(SwappingItem item, Context context, boolean viewingAllItems, boolean isCurrUser) {
             if (bookmarkIds.contains(item.itemId)) {
                 bookmarkIcon.setImageResource(R.drawable.baseline_bookmark_24);
             }
@@ -79,6 +88,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                 FirebaseDatabase.getInstance().getReference().child("people").child(FirebaseAuth.getInstance().getUid())
                         .child("bookmarkIds").setValue(bookmarkIds);
             });
+            if (viewingAllItems && isCurrUser) { bookmarkBtn.setVisibility(View.INVISIBLE); }
 
             name.setText(item.name);
             FirebaseStorage.getInstance().getReference().child(item.itemId).child("mainImg").getDownloadUrl().addOnSuccessListener(uri -> {
