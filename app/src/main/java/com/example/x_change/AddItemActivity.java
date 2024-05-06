@@ -1,5 +1,6 @@
 package com.example.x_change;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -15,10 +16,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.x_change.adapters.ItemImageUriAdapter;
+import com.example.x_change.utility.Profile;
 import com.example.x_change.utility.SwappingItem;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -37,10 +42,12 @@ public class AddItemActivity extends AppCompatActivity {
     ImageView mainImg;
     RecyclerView recyclerView;
     EditText name, value, description, lookingFor;
+    String uId = FirebaseAuth.getInstance().getUid();
 
     final int MAIN_IMG_REQ = 5, IMG_REQ = 6;
-    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("items");
     StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("items");
+    DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("people").child(uId);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +83,7 @@ public class AddItemActivity extends AppCompatActivity {
             } else {
                 SwappingItem item = new SwappingItem(itemName, "", FirebaseAuth.getInstance().getUid(), itemDescription, itemLookingFor, itemValue, imgList, "mainImg");
                 addItemToDatabase(item);
+                finish();
             }
         });
 
@@ -97,6 +105,18 @@ public class AddItemActivity extends AppCompatActivity {
         for (int i=0; i<imageUris.size(); i++) {
             uploadPic(i+"", imageUris.get(i));
         }
+        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Profile p = snapshot.getValue(Profile.class);
+                if (p!= null) {
+                    userReference.child("sellingItemIds").child(p.sellingItemIds.size()+"").setValue(item.itemId);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
     }
 
     public void fileSelector(int reqCode) {

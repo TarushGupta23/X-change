@@ -86,6 +86,9 @@ public class EditProfileActivity extends AppCompatActivity {
             } else {
                 reference.setValue(p);
                 uploadPic();
+                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -133,7 +136,8 @@ public class EditProfileActivity extends AppCompatActivity {
     public void uploadPic() {
         if (bannerChange) {
             storageRef.child("userBannerImage").putFile(bannerURI);
-        } else if (profileChange) {
+        }
+        if (profileChange) {
             storageRef.child("userProfileImage").putFile(profileUri);
         }
     }

@@ -39,7 +39,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView7"
+                android:id="@+id/itemDisplay_profileCard"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_marginStart="40dp"
@@ -125,8 +125,8 @@
                 app:cardBackgroundColor="@color/pink"
                 app:cardCornerRadius="30dp"
                 app:cardElevation="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView7"
-                app:layout_constraintEnd_toStartOf="@+id/cardView7">
+                app:layout_constraintBottom_toBottomOf="@+id/itemDisplay_profileCard"
+                app:layout_constraintEnd_toStartOf="@+id/itemDisplay_profileCard">
 
                 <ImageView
                     android:id="@+id/itemDisplay_profilePic"
@@ -149,7 +149,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/cardView6"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cardView6"
-                app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+                app:layout_constraintTop_toBottomOf="@+id/itemDisplay_profileCard" />
 
             <TextView
                 android:id="@+id/itemDisplay_lookingFor"

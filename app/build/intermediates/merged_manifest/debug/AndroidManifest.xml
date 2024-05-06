@@ -33,6 +33,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.Xchange" >
         <activity
+            android:name="com.example.x_change.AllBookmarksActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.x_change.AllItemsActivity"
             android:exported="false" />
         <activity

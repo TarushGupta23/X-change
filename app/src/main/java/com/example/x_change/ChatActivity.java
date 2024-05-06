@@ -81,6 +81,7 @@ public class ChatActivity extends AppCompatActivity {
                 String formattedDate = dateFormat.format(currentDate);
                 Chat c = new Chat(uId, msg, formattedDate);
                 reference.child(chatList.size() + "").setValue(c);
+                msgField.setText("");
             }
         });
 

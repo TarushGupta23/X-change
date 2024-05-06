@@ -19,7 +19,7 @@
                 android:id="@+id/profileActivity_bannerImage"
                 android:layout_width="0dp"
                 android:layout_height="180dp"
-                android:background="#FF0000"
+                android:background="#00FFE2"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -451,7 +451,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                app:cardBackgroundColor="#A1F5D2DD"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -470,7 +470,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                app:cardBackgroundColor="#A1F5D2DD"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

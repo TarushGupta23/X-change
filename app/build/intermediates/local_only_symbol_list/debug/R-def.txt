@@ -56,6 +56,7 @@ id addItem_lookingFor
 id addItem_mainImg
 id addItem_name
 id addItem_value
+id allBookmarksRV
 id allItemsRV
 id allReviewsRV
 id bookmarksNone
@@ -71,7 +72,6 @@ id cardView3
 id cardView4
 id cardView5
 id cardView6
-id cardView7
 id cardView8
 id cardView9
 id card_view1
@@ -119,6 +119,7 @@ id itemDisplay_itemName
 id itemDisplay_location
 id itemDisplay_lookingFor
 id itemDisplay_mainItemImg
+id itemDisplay_profileCard
 id itemDisplay_profileName
 id itemDisplay_profilePic
 id itemDisplay_recyclerView
@@ -163,6 +164,7 @@ id profileEditActivity_changeBanner
 id profileEditActivity_changeProfilePic
 id profileEditActivity_logOutBtn
 id profileEditActivity_profileImage
+id profileViewActivity_baseLayout
 id reviewContent
 id reviewDialog_cancelBtn
 id reviewDialog_doneBtn
@@ -202,6 +204,7 @@ id tv2
 id welcomeActivity_loginBtn
 id welcomeActivity_signUpBtn
 layout activity_add_item
+layout activity_all_bookmarks
 layout activity_all_items
 layout activity_all_reviews
 layout activity_chat

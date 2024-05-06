@@ -2,6 +2,7 @@ package com.example.x_change;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 public class ItemsDisplayActivity extends AppCompatActivity {
     ImageView mainImg, profileImg, bookmark;
     TextView itemName,profileName, location, description, lookingFor, value;
+    CardView profileCard;
     RecyclerView recyclerView;
     Button swapBtn;
 
@@ -38,6 +40,7 @@ public class ItemsDisplayActivity extends AppCompatActivity {
     DatabaseReference bookmarkReference = FirebaseDatabase.getInstance().getReference().child("people").child(FirebaseAuth.getInstance().getUid()).child("bookmarkIds");
     SwappingItem item;
     ArrayList<String> bookmarks = new ArrayList<>();
+    ArrayList<String> sellingItemIds = new ArrayList<>();
     boolean itemBookmarked = false;
 
     @Override
@@ -56,6 +59,7 @@ public class ItemsDisplayActivity extends AppCompatActivity {
         value = findViewById(R.id.itemDisplay_value);
         recyclerView = findViewById(R.id.itemDisplay_recyclerView);
         swapBtn = findViewById(R.id.itemDisplay_swapBtn);
+        profileCard = findViewById(R.id.itemDisplay_profileCard);
 
         itemId = getIntent().getStringExtra("itemId");
         reference = reference.child(itemId);
@@ -75,19 +79,6 @@ public class ItemsDisplayActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-                bookmark.setOnClickListener(view -> {
-                    if (itemBookmarked) {
-                        bookmark.setImageResource(R.drawable.baseline_bookmark_border_24);
-                        bookmarks.remove(itemId);
-                    } else {
-                        bookmark.setImageResource(R.drawable.baseline_bookmark_24);
-                        bookmarks.remove(itemId);
-                        bookmarks.add(itemId);
-                    }
-                    bookmarkReference.setValue(bookmarks);
-                    itemBookmarked = !itemBookmarked;
-                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
@@ -104,8 +95,17 @@ public class ItemsDisplayActivity extends AppCompatActivity {
                 } else {
                     updateItemData(item);
                     setImages(item);
+                    if (item.sellerId.equals(FirebaseAuth.getInstance().getUid())) {
+                        sellerViewing(item);
+                    }
 
-                    mainImg.setOnClickListener(view -> { // go to profile view
+                    profileCard.setOnClickListener(view -> { // go to profile view
+                        Intent intent = new Intent(ItemsDisplayActivity.this, ProfileViewActivity.class);
+                        intent.putExtra("uId", item.sellerId);
+                        startActivity(intent);
+                    });
+
+                    profileImg.setOnClickListener(view -> { // go to profile view
                         Intent intent = new Intent(ItemsDisplayActivity.this, ProfileViewActivity.class);
                         intent.putExtra("uId", item.sellerId);
                         startActivity(intent);
@@ -117,6 +117,19 @@ public class ItemsDisplayActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+        bookmark.setOnClickListener(view -> {
+            if (itemBookmarked) {
+                bookmark.setImageResource(R.drawable.baseline_bookmark_border_24);
+                bookmarks.remove(itemId);
+            } else {
+                bookmark.setImageResource(R.drawable.baseline_bookmark_24);
+                bookmarks.remove(itemId);
+                bookmarks.add(itemId);
+            }
+            bookmarkReference.setValue(bookmarks);
+            itemBookmarked = !itemBookmarked;
         });
     }
 
@@ -137,6 +150,7 @@ public class ItemsDisplayActivity extends AppCompatActivity {
                 if (sellerProfile != null) {
                     profileName.setText(sellerProfile.profileName);
                     location.setText(sellerProfile.location);
+                    sellingItemIds = sellerProfile.sellingItemIds;
                 }
             }
             @Override
@@ -145,8 +159,8 @@ public class ItemsDisplayActivity extends AppCompatActivity {
     }
 
     void updateItemData(SwappingItem item) {
-        itemName.setText(item.name);
         sellerReference = sellerReference.child(item.sellerId);
+        itemName.setText(item.name);
         description.setText(item.description);
         lookingFor.setText(item.lookingFor);
         value.setText(item.value);
@@ -154,5 +168,17 @@ public class ItemsDisplayActivity extends AppCompatActivity {
         if (item.images.size() == 0) {
             recyclerView.setVisibility(View.GONE);
         }
+    }
+
+    void sellerViewing(SwappingItem item) {
+        swapBtn.setText("Remove Item");
+        bookmark.setVisibility(View.GONE);
+        swapBtn.setOnClickListener(view -> {
+            sellingItemIds.remove(item.itemId);
+            sellerReference.child("sellingItemIds").setValue(sellingItemIds);
+            reference.setValue(null);
+            FirebaseStorage.getInstance().getReference().child(item.itemId).delete();
+            finish();
+        });
     }
 }
