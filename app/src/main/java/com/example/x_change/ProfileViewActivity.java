@@ -3,16 +3,20 @@ package com.example.x_change;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -56,6 +60,7 @@ public class ProfileViewActivity extends AppCompatActivity {
     private ProfileViewItemsAdapter itemsAdapter;
     private ReviewsAdapter reviewsAdapter;
     ArrayList<Review> reviewList;
+//    ConstraintLayout baseLayout;
 
     private Profile p;
     private String chatId;
@@ -97,6 +102,7 @@ public class ProfileViewActivity extends AppCompatActivity {
         itemsRV = findViewById(R.id.profileActivity_itemsRV);
         reviewsRV = findViewById(R.id.profileActivity_reviewsRV);
         viewItems = findViewById(R.id.profileActivity_viewItems);
+//        baseLayout = findViewById(R.id.profileViewActivity_baseLayout);
 
         chatId = currId;
         if (chatId.compareTo(uId) < 0) {
@@ -156,7 +162,8 @@ public class ProfileViewActivity extends AppCompatActivity {
 
         rightBtn.setOnClickListener(view -> { // show review dialog
             if (!reviewGiven) {
-                reviewDialog();
+//                reviewDialog();
+                showDialog(this);
             } else {
                 Toast.makeText(this, "Review already provided", Toast.LENGTH_SHORT).show();
             }
@@ -267,6 +274,7 @@ public class ProfileViewActivity extends AppCompatActivity {
     void reviewDialog() {
         android.app.AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
+//        View dialogView = inflater.inflate(R.layout.dialog_add_review, baseLayout);
         View dialogView = inflater.inflate(R.layout.dialog_add_review, null);
         EditText msg;
         Button done, cancel;
@@ -309,10 +317,64 @@ public class ProfileViewActivity extends AppCompatActivity {
             String text = msg.getText().toString();
             DatabaseReference newSlot =  reviewReference.push();
             newSlot.setValue(new Review(newSlot.getKey(), currId, text, starCount.get()));
-            reference.child("profileId").child(reviewList.size()+"").setValue(newSlot.getKey());
+            reference.child("reviewIds").child(reviewList.size()+"").setValue(newSlot.getKey());
             alertDialog.dismiss();
         });
         alertDialog.show();
+    }
+
+    public void showDialog(Activity activity){
+        final Dialog dialogView = new Dialog(activity, android.R.style.Theme_Translucent);
+//        final Dialog dialogView = new Dialog(activity);
+        dialogView.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogView.setCancelable(false);
+        dialogView.setContentView(R.layout.dialog_add_review);
+
+        EditText msg;
+        Button done, cancel;
+        ImageView[] stars = new ImageView[5];
+        AtomicInteger starCount = new AtomicInteger(); // this is just an integer
+        msg = dialogView.findViewById(R.id.reviewDialog_msg);
+        stars[0] = dialogView.findViewById(R.id.reviewDialog_star1);
+        stars[1] = dialogView.findViewById(R.id.reviewDialog_star2);
+        stars[2] = dialogView.findViewById(R.id.reviewDialog_star3);
+        stars[3] = dialogView.findViewById(R.id.reviewDialog_star4);
+        stars[4] = dialogView.findViewById(R.id.reviewDialog_star5);
+        done = dialogView.findViewById(R.id.reviewDialog_doneBtn);
+        cancel = dialogView.findViewById(R.id.reviewDialog_cancelBtn);
+
+//        dialogBuilder.setView(dialogView);
+//        AlertDialog alertDialog = dialogBuilder.create();
+
+        for (int i = 0; i<stars.length; i++) {
+            int currStar = i; // do not remove this
+            stars[i].setOnClickListener(view -> {
+                for (int j = currStar+1; j<stars.length; j++) {
+                    stars[j].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.baseline_star_border_24));
+                    stars[j].setColorFilter(ContextCompat.getColor(this, R.color.indigo_dark), PorterDuff.Mode.SRC_IN);
+                }
+
+                for (int j = 0; j <= currStar; j++) {
+                    stars[j].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.baseline_star_24));
+                    stars[j].setColorFilter(ContextCompat.getColor(this, R.color.pink), PorterDuff.Mode.SRC_IN);
+                }
+                starCount.set(currStar + 1);
+            });
+        }
+
+        cancel.setOnClickListener(view -> {
+            dialogView.dismiss();
+        });
+
+        done.setOnClickListener(view -> {
+            String text = msg.getText().toString();
+            DatabaseReference newSlot =  reviewReference.push();
+            newSlot.setValue(new Review(newSlot.getKey(), currId, text, starCount.get()));
+            reference.child("reviewIds").child(reviewList.size()+"").setValue(newSlot.getKey());
+            dialogView.dismiss();
+        });
+        dialogView.show();
+
     }
 
     public void addChatIds(String chatId) {
