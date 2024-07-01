@@ -6,6 +6,11 @@
 
 Welcome to Xchange, an Android application built to facilitate the swapping of items between users. Xchange promotes a payment-free environment where users can exchange items they no longer need for items they desire, fostering a sense of community and sustainability.
 
+## Screenshots 📸
+| Create Profile | Swap Items | Login Page | Profile Page | Give Reviews |
+|---------------|---------------|---------------|---------------|---------------|
+| ![img1](https://github.com/TarushGupta23/storage/blob/main/Xchange/img1.png) | ![img2](https://github.com/TarushGupta23/storage/blob/main/Xchange/img2.png) | ![Video 3](https://github.com/TarushGupta23/storage/blob/main/Xchange/img3.png) | ![Video 4](https://github.com/TarushGupta23/storage/blob/main/Xchange/img4.png) | ![Video 5](https://github.com/TarushGupta23/storage/blob/main/Xchange/img5.png) |
+
 ## Features
 
 - **Item Swapping**: Users can swap items they no longer need with others who may find them useful.
@@ -28,12 +33,6 @@ This project was created by a team during a hackathon event. The team members in
 
 - [Tarush Gupta](https://github.com/TarushGupta23)
 - [Naman Tripathi](https://github.com/NamanTripathi937)
-
-## Screenshots 📸
-| Create Profile | Swap Items | Login Page | Profile Page | Give Reviews |
-|---------------|---------------|---------------|---------------|---------------|
-| ![img1](https://github.com/TarushGupta23/storage/blob/main/Xchange/img1.png) | ![img2](https://github.com/TarushGupta23/storage/blob/main/Xchange/img2.png) | ![Video 3](https://github.com/TarushGupta23/storage/blob/main/Xchange/img3.png) | ![Video 4](https://github.com/TarushGupta23/storage/blob/main/Xchange/img4.png) | ![Video 5](https://github.com/TarushGupta23/storage/blob/main/Xchange/img5.png) |
-
 
 ## How to Use
 
